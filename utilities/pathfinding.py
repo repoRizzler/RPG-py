@@ -1,16 +1,34 @@
-# pathfinding.py - Pathfinding and line of sight algorithms
 import heapq
-import math
 
 
 def heuristic(a, b):
-    # Manhattan distance
+    """
+    Heuristic function for A* algorithm, using Manhattan distance.
+
+    Args:
+        a (tuple): (x, y) coordinates of point a.
+        b (tuple): (x, y) coordinates of point b.
+
+    Returns:
+        int: Manhattan distance between points a and b.
+    """
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 
 def a_star_pathfinding(start_x, start_y, goal_x, goal_y, game_map):
     """
-    A* pathfinding algorithm to find path from start to goal
+    A* pathfinding algorithm to find the shortest path from start to goal on a grid map.
+
+    Args:
+        start_x (float or int): Starting x coordinate (tile).
+        start_y (float or int): Starting y coordinate (tile).
+        goal_x (float or int): Goal x coordinate (tile).
+        goal_y (float or int): Goal y coordinate (tile).
+        game_map (object): Map object that must implement is_wall(x, y) method.
+
+    Returns:
+        list of tuples: List of (x, y) tile coordinates representing the path from start to goal.
+                        Returns empty list if no path exists or goal is a wall.
     """
     start = (int(start_x), int(start_y))
     goal = (int(goal_x), int(goal_y))
@@ -78,7 +96,17 @@ def a_star_pathfinding(start_x, start_y, goal_x, goal_y, game_map):
 
 def has_line_of_sight(x0, y0, x1, y1, game_map):
     """
-    Bresenham's line algorithm for line of sight checking
+    Check if there is a clear line of sight between two points on a grid using Bresenham's line algorithm.
+
+    Args:
+        x0 (float or int): Starting x coordinate.
+        y0 (float or int): Starting y coordinate.
+        x1 (float or int): Ending x coordinate.
+        y1 (float or int): Ending y coordinate.
+        game_map (Map): Map object with method is_wall(x, y) that returns True if position is blocked.
+
+    Returns:
+        bool: True if line of sight exists (no walls between points), False otherwise.
     """
     x0, y0 = int(x0), int(y0)
     x1, y1 = int(x1), int(y1)

@@ -4,7 +4,10 @@ import pygame
 import math
 import random
 from enum import Enum, auto
+
+import context.context
 from context.context import TILE_SIZE, RED, WHITE, GREEN, GREY
+from entity.HitBox.RectangleHitbox import RectEntity
 from utilities.pathfinding import a_star_pathfinding
 
 
@@ -14,12 +17,39 @@ class EnemyState(Enum):
     CHASE = auto()
     ATTACK = auto()
     COOLDOWN = auto()
+    DEAD = auto()
 
 
-class Enemy:
-    """Base Enemy class with common functionality"""
+class Enemy(RectEntity):
+    """
+    Base Enemy class with common AI behavior.
+    Extends RectEntity for hitbox handling and collision.
 
-    def __init__(self, x, y):
+    Attributes:
+        x (int): Enemy's x position on the map.
+        y (int): Enemy's y position on the map.
+        state (EnemyState): Current state of the enemy (e.g. IDLE, CHASE).
+        detection_radius (int): Radius within which the player can be detected.
+        attack_radius (int): Radius within which the enemy can attack.
+        attack_damage (int): Damage dealt by the enemy.
+        path (list[tuple[int, int]]): Sequence of grid cells toward the target.
+        next_attack_time (int): Next allowed time for attack.
+        attack_cooldown (int): Time delay between attacks in milliseconds.
+        color (Color): Debug color used for drawing the enemy.
+        hp (int): Hit points of the enemy.
+    """
+
+    def __init__(self, x, y, width, height):
+        """
+         Initializes a base Enemy instance. Not intended to be used directly—meant to be extended by enemy type subclasses.
+
+        Args:
+            x (int): X-coordinate on the map grid.
+            y (int): Y-coordinate on the map grid.
+            width (int): Width of the enemy in map units.
+            height (int): Height of the enemy in map units.
+        """
+        super().__init__(x+width, y+height, width, height)
         self.x = x
         self.y = y
         self.state = EnemyState.IDLE
@@ -32,28 +62,57 @@ class Enemy:
         self.attack_cooldown = 1000  # milliseconds
         self.color = RED  # Default color, overridden by subclasses
 
-    def draw(self, screen):
-        center_x = int((self.x + 0.5) * TILE_SIZE)
-        center_y = int((self.y + 0.5) * TILE_SIZE)
+        self.hp = 1
+
+    def draw(self,screen,camera):
+        """
+        Draws the enemy's current state indicator on the screen.
+
+        Args:
+            screen (pygame.Surface): The surface to draw on.
+            camera (Camera): The camera object to adjust position relative to screen.
+
+        Returns:
+            None
+        """
+        center_x, center_y = self.get_center(camera)
 
         # Draw state indicator
         state_colors = {
             EnemyState.IDLE: WHITE,
             EnemyState.CHASE: GREEN,
             EnemyState.ATTACK: RED,
-            EnemyState.COOLDOWN: GREY
+            EnemyState.COOLDOWN: GREY,
+            EnemyState.DEAD: context.context.BLACK
         }
         pygame.draw.circle(screen, state_colors[self.state],
                            (center_x, center_y - TILE_SIZE // 2), TILE_SIZE // 8)
 
     def distance_to(self, x, y):
+        """
+        Calculates the Euclidean distance to a target (x, y) position.
+
+        Args:
+            x (float): Target X position.
+            y (float): Target Y position.
+
+        Returns:
+            float: Distance to the target.
+        """
         return math.sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
 
     def can_see_player(self, player, game_map):
         """
-        Check if the enemy can see the player, considering:
-        1. Distance (detection radius)
-        2. Line of sight (no walls in between)
+        Determines whether the enemy can see the player.
+
+        Checks both distance (detection radius) and line of sight using Bresenham's algorithm.
+
+        Args:
+            player (Player): The player object.
+            game_map (Map): The current game map.
+
+        Returns:
+            bool: True if the player is visible, otherwise False.
         """
         # Check if player is within detection radius
         if self.distance_to(player.x, player.y) > self.detection_radius:
@@ -98,7 +157,16 @@ class Enemy:
         return True
 
     def move_toward_player(self, player, game_map):
-        """Common movement logic when chasing the player"""
+        """
+        Moves the enemy toward the player using A* pathfinding.
+
+        Args:
+            player (Player): The player instance.
+            game_map (Map): The current game map.
+
+        Returns:
+            None
+        """
         # A* pathfinding implementation
         if len(self.path) == 0 or random.random() < 0.05:  # Occasionally recalculate path
             self.path = a_star_pathfinding(self.x, self.y, player.x, player.y, game_map)
@@ -130,28 +198,44 @@ class Enemy:
 
     def heuristic(self, a, b):
         """
-        Calculate the Manhattan distance heuristic between two points
+        Calculates the Manhattan distance between two points.
+
+        Args:
+            a (tuple[int, int]): First point (x, y).
+            b (tuple[int, int]): Second point (x, y).
+
+        Returns:
+            int: Manhattan distance.
         """
         return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
-    def update(self, player, game_map, projectiles, current_time):
-        """Base update method with common state logic"""
-        # Print state for debugging
-        # print(f"Enemy at ({self.x}, {self.y}) in state {self.state}, distance to player: {self.distance_to(player.x, player.y)}")
+    def update(self,camera ,player, game_map, projectiles, current_time):
+        """
+         Updates the enemy's behavior and position based on its state.
+
+        Args:
+            camera (Camera): Camera used to offset screen position.
+            player (Player): The player object.
+            game_map (Map): The current map.
+            projectiles (list[Projectile]): List of active projectiles.
+            current_time (int): Current time in milliseconds.
+
+        Returns:
+        None
+        """
 
         # IDLE state logic
         if self.state == EnemyState.IDLE:
             if self.can_see_player(player, game_map):
-                # print(f"Enemy sees player, changing to CHASE state")
                 self.state = EnemyState.CHASE
 
         # CHASE state logic - basic movement
         elif self.state == EnemyState.CHASE:
+           #==== uncomment to make eneny forget about player when out of reach =======================
             # if not self.can_see_player(player, game_map):
             #     # print(f"Enemy lost sight of player, changing to IDLE state")
             #     self.state = EnemyState.IDLE
             #     return
-
             # Check if in attack range
             if self.distance_to(player.x, player.y) <= self.attack_radius and self.can_see_player(player, game_map):
                 # print(f"Enemy in attack range, preparing to attack")
@@ -159,7 +243,47 @@ class Enemy:
             else:
                 # print(f"Enemy moving toward player")
                 self.move_toward_player(player, game_map)
+        pos = self.get_center(camera)
+        super().update_pos(pos[0], pos[1])
 
     def prepare_attack(self, current_time):
-        """Prepare for attack, override in subclasses"""
+        """
+        Placeholder for attack logic. To be overridden by subclasses.
+
+        Args:
+            current_time (int): Current time in milliseconds.
+
+        Returns:
+            None
+        """
         pass
+    def take_damage(self, damage):
+        """
+        Reduces enemy HP by a given damage amount. Transitions to DEAD state if HP falls below 0.
+
+        Args:
+            damage (int): Amount of damage received.
+
+        Returns:
+            None
+        """
+        self.hp -= damage
+        print("attack on enemy")
+        print(f"enemy hp: {self.hp}")
+        if self.hp < 0:
+            self.hp = 0
+            self.state = EnemyState.DEAD
+    def get_center(self, camera):
+        """
+        Gets the center coordinates of the enemy relative to the camera, in screen pixels.
+
+        Args:
+            camera (Camera): Camera object for coordinate transformation.
+
+        Returns:
+            tuple[int, int]: (x, y) center screen coordinates.
+        """
+        x,y = camera.apply(self.x, self.y)
+        center_x = int((x + 0.5) * TILE_SIZE)
+        center_y = int((y + 0.5) * TILE_SIZE)
+        return center_x, center_y
