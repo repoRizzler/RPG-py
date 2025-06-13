@@ -20,7 +20,7 @@ documentation for details.
    modules/weapons
    modules/maps
    modules/utilities
-   api/modules
+   api
 
 Indices and tables
 ==================

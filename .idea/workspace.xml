@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05e2a2ef-dddf-4d0a-9e3e-29f2166d19e3" name="Changes" comment="first commit&#10;progress:&#10;- 2d map&#10;- wasd movement  &#10;- basic enemy Ai (pathfinding and attack behaviour)">
-      <change afterPath="$PROJECT_DIR$/LevelEditor/LevelEditor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity/HitBox/RectangleHitbox.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity/player/player_projectile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity/weapon/MeleeWeapon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity/weapon/RangedWeapon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entity/weapon/weapon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/attack_arc_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/colision_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/DebugRenderer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/HitboxUtilities.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/enemy/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/enemy/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/enemy/melee_enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/enemy/melee_enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/enemy/ranged_enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/enemy/ranged_enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/player/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/projectile.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/projectile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
-    </list>
+    <list default="true" id="05e2a2ef-dddf-4d0a-9e3e-29f2166d19e3" name="Changes" comment="first commit&#10;progress:&#10;- 2d map&#10;- wasd movement  &#10;- basic enemy Ai (pathfinding and attack behaviour)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/PJATK/sem_4/PPY/Practice/cw_1/fun",
+    "last_opened_file_path": "C:/PJATK/sem_4/PPY/Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -262,6 +238,7 @@
       <workItem from="1748768542453" duration="35310000" />
       <workItem from="1749310788164" duration="23637000" />
       <workItem from="1749474598887" duration="781000" />
+      <workItem from="1749807291162" duration="2459000" />
     </task>
     <task id="LOCAL-00001" summary="first commit&#10;progress:&#10;- 2d map&#10;- wasd movement  &#10;- basic enemy Ai (pathfinding and attack behaviour)">
       <option name="closed" value="true" />
@@ -299,7 +276,7 @@
     <SUITE FILE_PATH="coverage/Project$map.coverage" NAME="map Coverage Results" MODIFIED="1747817193360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project$main.coverage" NAME="main Coverage Results" MODIFIED="1749395491878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Project$colision_test.coverage" NAME="colision_test Coverage Results" MODIFIED="1748774238105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/Project$LevelEditor.coverage" NAME="LevelEditor Coverage Results" MODIFIED="1749474609506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LevelEditor" />
+    <SUITE FILE_PATH="coverage/Project$LevelEditor.coverage" NAME="LevelEditor Coverage Results" MODIFIED="1749808077084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/LevelEditor" />
     <SUITE FILE_PATH="coverage/Project$MouseDirectedSwingWeapon.coverage" NAME="MouseDirectedSwingWeapon Coverage Results" MODIFIED="1748617336580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/Project$player.coverage" NAME="player Coverage Results" MODIFIED="1747826685355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project$SwingTest.coverage" NAME="SwingTest Coverage Results" MODIFIED="1748602200753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />

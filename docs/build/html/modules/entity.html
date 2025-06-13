@@ -46,15 +46,182 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="context.html">Context Module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Entity Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#enemy">Enemy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hitbox">HitBox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#player">Player</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#weapon">Weapon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-entity.enemy.enemy">Enemy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity.enemy.enemy.Enemy"><code class="docutils literal notranslate"><span class="pre">Enemy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.x"><code class="docutils literal notranslate"><span class="pre">Enemy.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.y"><code class="docutils literal notranslate"><span class="pre">Enemy.y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.state"><code class="docutils literal notranslate"><span class="pre">Enemy.state</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.detection_radius"><code class="docutils literal notranslate"><span class="pre">Enemy.detection_radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.attack_radius"><code class="docutils literal notranslate"><span class="pre">Enemy.attack_radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.attack_damage"><code class="docutils literal notranslate"><span class="pre">Enemy.attack_damage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.path"><code class="docutils literal notranslate"><span class="pre">Enemy.path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.next_attack_time"><code class="docutils literal notranslate"><span class="pre">Enemy.next_attack_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.attack_cooldown"><code class="docutils literal notranslate"><span class="pre">Enemy.attack_cooldown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.color"><code class="docutils literal notranslate"><span class="pre">Enemy.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.hp"><code class="docutils literal notranslate"><span class="pre">Enemy.hp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.__init__"><code class="docutils literal notranslate"><span class="pre">Enemy.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.can_see_player"><code class="docutils literal notranslate"><span class="pre">Enemy.can_see_player()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.distance_to"><code class="docutils literal notranslate"><span class="pre">Enemy.distance_to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.draw"><code class="docutils literal notranslate"><span class="pre">Enemy.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.get_center"><code class="docutils literal notranslate"><span class="pre">Enemy.get_center()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.heuristic"><code class="docutils literal notranslate"><span class="pre">Enemy.heuristic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.move_toward_player"><code class="docutils literal notranslate"><span class="pre">Enemy.move_toward_player()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.prepare_attack"><code class="docutils literal notranslate"><span class="pre">Enemy.prepare_attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.take_damage"><code class="docutils literal notranslate"><span class="pre">Enemy.take_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.Enemy.update"><code class="docutils literal notranslate"><span class="pre">Enemy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.enemy.enemy.EnemyState"><code class="docutils literal notranslate"><span class="pre">EnemyState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.EnemyState.ATTACK"><code class="docutils literal notranslate"><span class="pre">EnemyState.ATTACK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.EnemyState.CHASE"><code class="docutils literal notranslate"><span class="pre">EnemyState.CHASE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.EnemyState.COOLDOWN"><code class="docutils literal notranslate"><span class="pre">EnemyState.COOLDOWN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.EnemyState.DEAD"><code class="docutils literal notranslate"><span class="pre">EnemyState.DEAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.enemy.EnemyState.IDLE"><code class="docutils literal notranslate"><span class="pre">EnemyState.IDLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.attack_radius"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.attack_radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.color"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.__init__"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.draw"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.prepare_attack"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.prepare_attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.melee_enemy.MeleeEnemy.update"><code class="docutils literal notranslate"><span class="pre">MeleeEnemy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy"><code class="docutils literal notranslate"><span class="pre">RangedEnemy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.attack_radius"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.attack_radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.color"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.cooldown_timer"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.cooldown_timer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.shoot_cooldown"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.shoot_cooldown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.__init__"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.draw"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.prepare_attack"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.prepare_attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.enemy.ranged_enemy.RangedEnemy.update"><code class="docutils literal notranslate"><span class="pre">RangedEnemy.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-entity.HitBox.RectangleHitbox">HitBox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity"><code class="docutils literal notranslate"><span class="pre">RectEntity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.pos"><code class="docutils literal notranslate"><span class="pre">RectEntity.pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.width"><code class="docutils literal notranslate"><span class="pre">RectEntity.width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.height"><code class="docutils literal notranslate"><span class="pre">RectEntity.height</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.angle"><code class="docutils literal notranslate"><span class="pre">RectEntity.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.color"><code class="docutils literal notranslate"><span class="pre">RectEntity.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.__init__"><code class="docutils literal notranslate"><span class="pre">RectEntity.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.collides_with_rect"><code class="docutils literal notranslate"><span class="pre">RectEntity.collides_with_rect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.draw_hit_box"><code class="docutils literal notranslate"><span class="pre">RectEntity.draw_hit_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.get_corners"><code class="docutils literal notranslate"><span class="pre">RectEntity.get_corners()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.off_collision"><code class="docutils literal notranslate"><span class="pre">RectEntity.off_collision()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.on_collision"><code class="docutils literal notranslate"><span class="pre">RectEntity.on_collision()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.update_angle"><code class="docutils literal notranslate"><span class="pre">RectEntity.update_angle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity.update_pos"><code class="docutils literal notranslate"><span class="pre">RectEntity.update_pos()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-entity.player.player">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity.player.player.Player"><code class="docutils literal notranslate"><span class="pre">Player</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.x"><code class="docutils literal notranslate"><span class="pre">Player.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.y"><code class="docutils literal notranslate"><span class="pre">Player.y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.center_x"><code class="docutils literal notranslate"><span class="pre">Player.center_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.center_y"><code class="docutils literal notranslate"><span class="pre">Player.center_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.speed"><code class="docutils literal notranslate"><span class="pre">Player.speed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.hp"><code class="docutils literal notranslate"><span class="pre">Player.hp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.max_hp"><code class="docutils literal notranslate"><span class="pre">Player.max_hp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.weapons"><code class="docutils literal notranslate"><span class="pre">Player.weapons</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.current_weapon_id"><code class="docutils literal notranslate"><span class="pre">Player.current_weapon_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.weapon"><code class="docutils literal notranslate"><span class="pre">Player.weapon</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.__init__"><code class="docutils literal notranslate"><span class="pre">Player.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.attack"><code class="docutils literal notranslate"><span class="pre">Player.attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.change_weapon_down"><code class="docutils literal notranslate"><span class="pre">Player.change_weapon_down()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.change_weapon_up"><code class="docutils literal notranslate"><span class="pre">Player.change_weapon_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.draw"><code class="docutils literal notranslate"><span class="pre">Player.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.get_angle_to_mouse"><code class="docutils literal notranslate"><span class="pre">Player.get_angle_to_mouse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.get_weapon_debug_info"><code class="docutils literal notranslate"><span class="pre">Player.get_weapon_debug_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.move"><code class="docutils literal notranslate"><span class="pre">Player.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.set_position"><code class="docutils literal notranslate"><span class="pre">Player.set_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.take_damage"><code class="docutils literal notranslate"><span class="pre">Player.take_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player.Player.update"><code class="docutils literal notranslate"><span class="pre">Player.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.origin_x"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.origin_x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.origin_y"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.origin_y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.max_distance"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.max_distance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.speed"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.speed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.color"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.__init__"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.draw"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.player.player_projectile.PlayerProjectile.update"><code class="docutils literal notranslate"><span class="pre">PlayerProjectile.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-entity.weapon.MeleeWeapon">Weapon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.damage"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.damage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.cooldown"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.cooldown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.reach"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.reach</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_duration"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.swing_duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.player_direction"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.player_direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.is_attacking"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.is_attacking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_direction"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.swing_direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.attack_start_time"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.attack_start_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.hit_enemies"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.hit_enemies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_start_angle"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.swing_start_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_deviation"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.swing_deviation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.current_angle"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.current_angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.handle_length"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.handle_length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.blade_length"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.blade_length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.__init__"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.attack"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.draw"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_direction"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.get_attack_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_progress"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.get_attack_progress()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_debug_info"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.get_debug_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_weapon_pos"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.get_weapon_pos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.MeleeWeapon.MeleeWeapon.update"><code class="docutils literal notranslate"><span class="pre">MeleeWeapon.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon"><code class="docutils literal notranslate"><span class="pre">RangedWeapon</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.damage"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.damage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.range"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.cooldown"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.cooldown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.projectile_speed"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.projectile_speed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.color"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.name"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.__init__"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.attack"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.draw"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.get_debug_info"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.get_debug_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.RangedWeapon.RangedWeapon.update"><code class="docutils literal notranslate"><span class="pre">RangedWeapon.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.weapon.weapon.Weapon"><code class="docutils literal notranslate"><span class="pre">Weapon</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.damage"><code class="docutils literal notranslate"><span class="pre">Weapon.damage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.cooldown"><code class="docutils literal notranslate"><span class="pre">Weapon.cooldown</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.last_attack_time"><code class="docutils literal notranslate"><span class="pre">Weapon.last_attack_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.weapon_type"><code class="docutils literal notranslate"><span class="pre">Weapon.weapon_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.__init__"><code class="docutils literal notranslate"><span class="pre">Weapon.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.attack"><code class="docutils literal notranslate"><span class="pre">Weapon.attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.can_attack"><code class="docutils literal notranslate"><span class="pre">Weapon.can_attack()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.Weapon.point_on_line_at_distance"><code class="docutils literal notranslate"><span class="pre">Weapon.point_on_line_at_distance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity.weapon.weapon.WeaponType"><code class="docutils literal notranslate"><span class="pre">WeaponType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.WeaponType.MELEE"><code class="docutils literal notranslate"><span class="pre">WeaponType.MELEE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entity.weapon.weapon.WeaponType.RANGED"><code class="docutils literal notranslate"><span class="pre">WeaponType.RANGED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">WeaponType.MELEE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">WeaponType.RANGED</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">Project</a></li>
 </ul>
 
         </div>
@@ -83,17 +250,1766 @@
              
   <section id="entity-module">
 <h1>Entity Module<a class="headerlink" href="#entity-module" title="Link to this heading"></a></h1>
-<section id="enemy">
-<h2>Enemy<a class="headerlink" href="#enemy" title="Link to this heading"></a></h2>
+<section id="module-entity.enemy.enemy">
+<span id="enemy"></span><h2>Enemy<a class="headerlink" href="#module-entity.enemy.enemy" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.enemy.enemy.</span></span><span class="sig-name descname"><span class="pre">Enemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy" title="Link to this definition"></a></dt>
+<dd><p>Base Enemy class with common AI behavior.
+Extends RectEntity for hitbox handling and collision.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.x" title="Link to this definition"></a></dt>
+<dd><p>Enemy’s x position on the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.y" title="Link to this definition"></a></dt>
+<dd><p>Enemy’s y position on the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.state">
+<span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.state" title="Link to this definition"></a></dt>
+<dd><p>Current state of the enemy (e.g. IDLE, CHASE).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#entity.enemy.enemy.EnemyState" title="entity.enemy.enemy.EnemyState">EnemyState</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.detection_radius">
+<span class="sig-name descname"><span class="pre">detection_radius</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.detection_radius" title="Link to this definition"></a></dt>
+<dd><p>Radius within which the player can be detected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.attack_radius">
+<span class="sig-name descname"><span class="pre">attack_radius</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.attack_radius" title="Link to this definition"></a></dt>
+<dd><p>Radius within which the enemy can attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.attack_damage">
+<span class="sig-name descname"><span class="pre">attack_damage</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.attack_damage" title="Link to this definition"></a></dt>
+<dd><p>Damage dealt by the enemy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.path" title="Link to this definition"></a></dt>
+<dd><p>Sequence of grid cells toward the target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[tuple[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.next_attack_time">
+<span class="sig-name descname"><span class="pre">next_attack_time</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.next_attack_time" title="Link to this definition"></a></dt>
+<dd><p>Next allowed time for attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.attack_cooldown">
+<span class="sig-name descname"><span class="pre">attack_cooldown</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.attack_cooldown" title="Link to this definition"></a></dt>
+<dd><p>Time delay between attacks in milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.color" title="Link to this definition"></a></dt>
+<dd><p>Debug color used for drawing the enemy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.hp">
+<span class="sig-name descname"><span class="pre">hp</span></span><a class="headerlink" href="#entity.enemy.enemy.Enemy.hp" title="Link to this definition"></a></dt>
+<dd><p>Hit points of the enemy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.__init__" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Initializes a base Enemy instance. Not intended to be used directly—meant to be extended by enemy type subclasses.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X-coordinate on the map grid.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y-coordinate on the map grid.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Width of the enemy in map units.</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the enemy in map units.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.can_see_player">
+<span class="sig-name descname"><span class="pre">can_see_player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.can_see_player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.can_see_player" title="Link to this definition"></a></dt>
+<dd><p>Determines whether the enemy can see the player.</p>
+<p>Checks both distance (detection radius) and line of sight using Bresenham’s algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player object.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – The current game map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the player is visible, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.distance_to">
+<span class="sig-name descname"><span class="pre">distance_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.distance_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.distance_to" title="Link to this definition"></a></dt>
+<dd><p>Calculates the Euclidean distance to a target (x, y) position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Target X position.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Target Y position.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distance to the target.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.draw" title="Link to this definition"></a></dt>
+<dd><p>Draws the enemy’s current state indicator on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The surface to draw on.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – The camera object to adjust position relative to screen.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.get_center">
+<span class="sig-name descname"><span class="pre">get_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.get_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.get_center" title="Link to this definition"></a></dt>
+<dd><p>Gets the center coordinates of the enemy relative to the camera, in screen pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera object for coordinate transformation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y) center screen coordinates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.heuristic">
+<span class="sig-name descname"><span class="pre">heuristic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.heuristic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.heuristic" title="Link to this definition"></a></dt>
+<dd><p>Calculates the Manhattan distance between two points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – First point (x, y).</p></li>
+<li><p><strong>b</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – Second point (x, y).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Manhattan distance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.move_toward_player">
+<span class="sig-name descname"><span class="pre">move_toward_player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.move_toward_player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.move_toward_player" title="Link to this definition"></a></dt>
+<dd><p>Moves the enemy toward the player using A* pathfinding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player instance.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – The current game map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.prepare_attack">
+<span class="sig-name descname"><span class="pre">prepare_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.prepare_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.prepare_attack" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for attack logic. To be overridden by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.take_damage">
+<span class="sig-name descname"><span class="pre">take_damage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.take_damage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.take_damage" title="Link to this definition"></a></dt>
+<dd><p>Reduces enemy HP by a given damage amount. Transitions to DEAD state if HP falls below 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>damage</strong> (<em>int</em>) – Amount of damage received.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.enemy.Enemy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#Enemy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.Enemy.update" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Updates the enemy’s behavior and position based on its state.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera used to offset screen position.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player object.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – The current map.</p></li>
+<li><p><strong>projectiles</strong> (<em>list</em><em>[</em><em>Projectile</em><em>]</em>) – List of active projectiles.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:
+None</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.enemy.enemy.</span></span><span class="sig-name descname"><span class="pre">EnemyState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/enemy.html#EnemyState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.enemy.EnemyState" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState.ATTACK">
+<span class="sig-name descname"><span class="pre">ATTACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#entity.enemy.enemy.EnemyState.ATTACK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState.CHASE">
+<span class="sig-name descname"><span class="pre">CHASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#entity.enemy.enemy.EnemyState.CHASE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState.COOLDOWN">
+<span class="sig-name descname"><span class="pre">COOLDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#entity.enemy.enemy.EnemyState.COOLDOWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState.DEAD">
+<span class="sig-name descname"><span class="pre">DEAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#entity.enemy.enemy.EnemyState.DEAD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.enemy.EnemyState.IDLE">
+<span class="sig-name descname"><span class="pre">IDLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#entity.enemy.enemy.EnemyState.IDLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-entity.enemy.melee_enemy">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.enemy.melee_enemy.</span></span><span class="sig-name descname"><span class="pre">MeleeEnemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/melee_enemy.html#MeleeEnemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy" title="Link to this definition"></a></dt>
+<dd><p>Enemy subclass for close-range melee attackers.</p>
+<dl class="simple">
+<dt>Extends:</dt><dd><p>Enemy: The base enemy class with AI and movement logic.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.attack_radius">
+<span class="sig-name descname"><span class="pre">attack_radius</span></span><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.attack_radius" title="Link to this definition"></a></dt>
+<dd><p>Distance within which the enemy can perform a melee attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.color" title="Link to this definition"></a></dt>
+<dd><p>Debug color for visualizing this enemy type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/melee_enemy.html#MeleeEnemy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes a MeleeEnemy instance with specific size and behavior.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X-coordinate on the map grid.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y-coordinate on the map grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/melee_enemy.html#MeleeEnemy.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.draw" title="Link to this definition"></a></dt>
+<dd><p>Draws the melee enemy and its hitbox if debug is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The rendering surface.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera for coordinate transformation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.prepare_attack">
+<span class="sig-name descname"><span class="pre">prepare_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/melee_enemy.html#MeleeEnemy.prepare_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.prepare_attack" title="Link to this definition"></a></dt>
+<dd><p>Prepares an immediate melee attack by switching to ATTACK state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.melee_enemy.MeleeEnemy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/melee_enemy.html#MeleeEnemy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.melee_enemy.MeleeEnemy.update" title="Link to this definition"></a></dt>
+<dd><p>Updates the melee enemy state, performs melee attack when in range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera for screen-relative coordinates.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – Player instance.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – Current game map.</p></li>
+<li><p><strong>projectiles</strong> (<em>list</em><em>[</em><em>Projectile</em><em>]</em>) – List of active projectiles.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-entity.enemy.ranged_enemy">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.enemy.ranged_enemy.</span></span><span class="sig-name descname"><span class="pre">RangedEnemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/ranged_enemy.html#RangedEnemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy" title="Link to this definition"></a></dt>
+<dd><p>Enemy subclass that attacks from a distance using projectiles.</p>
+<dl class="simple">
+<dt>Extends:</dt><dd><p>Enemy: The base enemy class with AI and movement logic.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.attack_radius">
+<span class="sig-name descname"><span class="pre">attack_radius</span></span><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.attack_radius" title="Link to this definition"></a></dt>
+<dd><p>Distance within which the enemy can shoot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.color" title="Link to this definition"></a></dt>
+<dd><p>Debug color for this enemy type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Color</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.cooldown_timer">
+<span class="sig-name descname"><span class="pre">cooldown_timer</span></span><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.cooldown_timer" title="Link to this definition"></a></dt>
+<dd><p>Time after which the enemy is allowed to shoot again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.shoot_cooldown">
+<span class="sig-name descname"><span class="pre">shoot_cooldown</span></span><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.shoot_cooldown" title="Link to this definition"></a></dt>
+<dd><p>Delay between shots in milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/ranged_enemy.html#RangedEnemy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes a RangedEnemy with projectile attack capabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – X-coordinate on the map grid.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Y-coordinate on the map grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/ranged_enemy.html#RangedEnemy.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.draw" title="Link to this definition"></a></dt>
+<dd><p>Draws the ranged enemy and optionally its hitbox if enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The rendering surface.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera object for view transformation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.prepare_attack">
+<span class="sig-name descname"><span class="pre">prepare_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/ranged_enemy.html#RangedEnemy.prepare_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.prepare_attack" title="Link to this definition"></a></dt>
+<dd><p>Prepares a ranged attack by entering a cooldown phase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.enemy.ranged_enemy.RangedEnemy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/enemy/ranged_enemy.html#RangedEnemy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.enemy.ranged_enemy.RangedEnemy.update" title="Link to this definition"></a></dt>
+<dd><p>Updates enemy behavior, handling cooldown and projectile attacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera for coordinate transformation.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player instance.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – Current map for collision and visibility checks.</p></li>
+<li><p><strong>projectiles</strong> (<em>list</em><em>[</em><em>Projectile</em><em>]</em>) – Active projectile list.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Game time in milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="hitbox">
-<h2>HitBox<a class="headerlink" href="#hitbox" title="Link to this heading"></a></h2>
+<section id="module-entity.HitBox.RectangleHitbox">
+<span id="hitbox"></span><h2>HitBox<a class="headerlink" href="#module-entity.HitBox.RectangleHitbox" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.HitBox.RectangleHitbox.</span></span><span class="sig-name descname"><span class="pre">RectEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity" title="Link to this definition"></a></dt>
+<dd><p>Base class for rectangular entities with rotation and collision detection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.pos" title="Link to this definition"></a></dt>
+<dd><p>Position of the entity center on the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygame.Vector2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.width" title="Link to this definition"></a></dt>
+<dd><p>Width of the rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.height" title="Link to this definition"></a></dt>
+<dd><p>Height of the rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.angle">
+<span class="sig-name descname"><span class="pre">angle</span></span><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.angle" title="Link to this definition"></a></dt>
+<dd><p>Rotation angle in degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.color" title="Link to this definition"></a></dt>
+<dd><p>Color used for rendering the hitbox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes a rectangular entity with a position, size, and angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – X-coordinate of the center.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Y-coordinate of the center.</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Width of the rectangle.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Height of the rectangle.</p></li>
+<li><p><strong>angle</strong> (<em>float</em><em>, </em><em>optional</em>) – Rotation angle in degrees. Defaults to 0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.collides_with_rect">
+<span class="sig-name descname"><span class="pre">collides_with_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.collides_with_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.collides_with_rect" title="Link to this definition"></a></dt>
+<dd><p>Checks collision with another rectangular entity using polygon intersection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#entity.HitBox.RectangleHitbox.RectEntity" title="entity.HitBox.RectangleHitbox.RectEntity"><em>RectEntity</em></a>) – The other rectangle to check collision against.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if there is a collision, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.draw_hit_box">
+<span class="sig-name descname"><span class="pre">draw_hit_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.draw_hit_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.draw_hit_box" title="Link to this definition"></a></dt>
+<dd><p>Draws the hitbox polygon on the provided surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>surface</strong> (<em>pygame.Surface</em>) – Surface to render the polygon on.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.get_corners">
+<span class="sig-name descname"><span class="pre">get_corners</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.get_corners"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.get_corners" title="Link to this definition"></a></dt>
+<dd><p>Calculates the corner points of the rectangle, considering rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of 4 rotated corner positions.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[pygame.Vector2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.off_collision">
+<span class="sig-name descname"><span class="pre">off_collision</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.off_collision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.off_collision" title="Link to this definition"></a></dt>
+<dd><p>Resets the entity’s color to green, indicating no collision.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.on_collision">
+<span class="sig-name descname"><span class="pre">on_collision</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.on_collision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.on_collision" title="Link to this definition"></a></dt>
+<dd><p>Changes the entity’s color to red, indicating collision.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.update_angle">
+<span class="sig-name descname"><span class="pre">update_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.update_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.update_angle" title="Link to this definition"></a></dt>
+<dd><p>Updates the rotation angle of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – New angle in degrees.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.HitBox.RectangleHitbox.RectEntity.update_pos">
+<span class="sig-name descname"><span class="pre">update_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/HitBox/RectangleHitbox.html#RectEntity.update_pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.HitBox.RectangleHitbox.RectEntity.update_pos" title="Link to this definition"></a></dt>
+<dd><p>Updates the position of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – New x-coordinate.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – New y-coordinate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="player">
-<h2>Player<a class="headerlink" href="#player" title="Link to this heading"></a></h2>
+<section id="module-entity.player.player">
+<span id="player"></span><h2>Player<a class="headerlink" href="#module-entity.player.player" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.player.player.Player">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.player.player.</span></span><span class="sig-name descname"><span class="pre">Player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player" title="Link to this definition"></a></dt>
+<dd><p>The player character controlled by the user.</p>
+<dl class="simple">
+<dt>Inherits from:</dt><dd><p>RectEntity: Provides hitbox and collision capabilities.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#entity.player.player.Player.x" title="Link to this definition"></a></dt>
+<dd><p>Player’s x-position on the game grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#entity.player.player.Player.y" title="Link to this definition"></a></dt>
+<dd><p>Player’s y-position on the game grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.center_x">
+<span class="sig-name descname"><span class="pre">center_x</span></span><a class="headerlink" href="#entity.player.player.Player.center_x" title="Link to this definition"></a></dt>
+<dd><p>Player’s center x-position on the screen (pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.center_y">
+<span class="sig-name descname"><span class="pre">center_y</span></span><a class="headerlink" href="#entity.player.player.Player.center_y" title="Link to this definition"></a></dt>
+<dd><p>Player’s center y-position on the screen (pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.speed">
+<span class="sig-name descname"><span class="pre">speed</span></span><a class="headerlink" href="#entity.player.player.Player.speed" title="Link to this definition"></a></dt>
+<dd><p>Movement speed of the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.hp">
+<span class="sig-name descname"><span class="pre">hp</span></span><a class="headerlink" href="#entity.player.player.Player.hp" title="Link to this definition"></a></dt>
+<dd><p>Current hit points of the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.max_hp">
+<span class="sig-name descname"><span class="pre">max_hp</span></span><a class="headerlink" href="#entity.player.player.Player.max_hp" title="Link to this definition"></a></dt>
+<dd><p>Maximum hit points of the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.weapons">
+<span class="sig-name descname"><span class="pre">weapons</span></span><a class="headerlink" href="#entity.player.player.Player.weapons" title="Link to this definition"></a></dt>
+<dd><p>List of player’s weapons (melee and ranged).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#entity.weapon.weapon.Weapon" title="entity.weapon.weapon.Weapon">Weapon</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.current_weapon_id">
+<span class="sig-name descname"><span class="pre">current_weapon_id</span></span><a class="headerlink" href="#entity.player.player.Player.current_weapon_id" title="Link to this definition"></a></dt>
+<dd><p>Index of currently selected weapon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player.Player.weapon">
+<span class="sig-name descname"><span class="pre">weapon</span></span><a class="headerlink" href="#entity.player.player.Player.weapon" title="Link to this definition"></a></dt>
+<dd><p>Currently equipped weapon (can be melee or ranged).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#entity.weapon.weapon.Weapon" title="entity.weapon.weapon.Weapon">Weapon</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the player at a specific grid position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Starting x-position on the grid.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Starting y-position on the grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.attack">
+<span class="sig-name descname"><span class="pre">attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.attack" title="Link to this definition"></a></dt>
+<dd><p>Performs an attack using the currently selected weapon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera for position offset.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+<li><p><strong>projectiles</strong> (<em>list</em><em>[</em><em>Projectile</em><em>]</em>) – List to append new projectiles (for ranged).</p></li>
+<li><p><strong>enemies</strong> (<em>list</em><em>[</em><a class="reference internal" href="#entity.enemy.enemy.Enemy" title="entity.enemy.enemy.Enemy"><em>Enemy</em></a><em>]</em>) – List of enemies in range (for ranged).</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – The game map (for ranged line-of-sight).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.change_weapon_down">
+<span class="sig-name descname"><span class="pre">change_weapon_down</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.change_weapon_down"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.change_weapon_down" title="Link to this definition"></a></dt>
+<dd><p>Switches to the previous weapon in the inventory (cyclic).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.change_weapon_up">
+<span class="sig-name descname"><span class="pre">change_weapon_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.change_weapon_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.change_weapon_up" title="Link to this definition"></a></dt>
+<dd><p>Switches to the next weapon in the inventory (cyclic).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.draw" title="Link to this definition"></a></dt>
+<dd><p>Renders the player on the screen along with health bar and weapon indicators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The rendering surface.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds (used by weapon draw).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.get_angle_to_mouse">
+<span class="sig-name descname"><span class="pre">get_angle_to_mouse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.get_angle_to_mouse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.get_angle_to_mouse" title="Link to this definition"></a></dt>
+<dd><p>Calculates the angle between the player and the mouse cursor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Angle in degrees from the player to the mouse position.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.get_weapon_debug_info">
+<span class="sig-name descname"><span class="pre">get_weapon_debug_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.get_weapon_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.get_weapon_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Returns weapon-related debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary containing debug info about weapon and player position.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.move" title="Link to this definition"></a></dt>
+<dd><p>Moves the player by delta x and y, checking for wall collisions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dx</strong> (<em>float</em>) – Change in x-direction.</p></li>
+<li><p><strong>dy</strong> (<em>float</em>) – Change in y-direction.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – Game map used for wall collision detection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.set_position">
+<span class="sig-name descname"><span class="pre">set_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.set_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.set_position" title="Link to this definition"></a></dt>
+<dd><p>Sets the player position directly on the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – New x-coordinate.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – New y-coordinate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.take_damage">
+<span class="sig-name descname"><span class="pre">take_damage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.take_damage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.take_damage" title="Link to this definition"></a></dt>
+<dd><p>Reduces the player’s health by the specified amount.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>int</em>) – Amount of damage received.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player.Player.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enemies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player.html#Player.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player.Player.update" title="Link to this definition"></a></dt>
+<dd><p>Updates player position and weapon logic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enemies</strong> (<em>list</em><em>[</em><a class="reference internal" href="#entity.enemy.enemy.Enemy" title="entity.enemy.enemy.Enemy"><em>Enemy</em></a><em>]</em>) – List of enemies in the game.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera used to calculate screen-relative positions.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-entity.player.player_projectile">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.player.player_projectile.</span></span><span class="sig-name descname"><span class="pre">PlayerProjectile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player_projectile.html#PlayerProjectile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile" title="Link to this definition"></a></dt>
+<dd><p>Projectile fired by the player, with damage, speed, and distance limitations.</p>
+<dl class="simple">
+<dt>Inherits from:</dt><dd><p>Projectile: Base class for projectile behavior and rendering.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.origin_x">
+<span class="sig-name descname"><span class="pre">origin_x</span></span><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.origin_x" title="Link to this definition"></a></dt>
+<dd><p>X-coordinate where the projectile was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.origin_y">
+<span class="sig-name descname"><span class="pre">origin_y</span></span><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.origin_y" title="Link to this definition"></a></dt>
+<dd><p>Y-coordinate where the projectile was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.max_distance">
+<span class="sig-name descname"><span class="pre">max_distance</span></span><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.max_distance" title="Link to this definition"></a></dt>
+<dd><p>Maximum distance the projectile can travel before deactivating.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.speed">
+<span class="sig-name descname"><span class="pre">speed</span></span><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.speed" title="Link to this definition"></a></dt>
+<dd><p>Speed of the projectile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.color" title="Link to this definition"></a></dt>
+<dd><p>Color used to represent the projectile visually.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player_projectile.html#PlayerProjectile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes a player projectile with specified position, direction, and properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Starting x-position of the projectile.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Starting y-position of the projectile.</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – Direction of movement in radians.</p></li>
+<li><p><strong>damage</strong> (<em>int</em>) – Amount of damage the projectile deals.</p></li>
+<li><p><strong>max_distance</strong> (<em>float</em>) – How far the projectile can travel before deactivating.</p></li>
+<li><p><strong>speed</strong> (<em>float</em><em>, </em><em>optional</em>) – Movement speed of the projectile. Defaults to 0.4.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player_projectile.html#PlayerProjectile.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.draw" title="Link to this definition"></a></dt>
+<dd><p>Draws the projectile on the screen using screen coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>screen</strong> (<em>pygame.Surface</em>) – Surface to draw the projectile on.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.player.player_projectile.PlayerProjectile.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/player/player_projectile.html#PlayerProjectile.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.player.player_projectile.PlayerProjectile.update" title="Link to this definition"></a></dt>
+<dd><p>Updates the projectile’s position and checks for collisions and distance limits.</p>
+<p>Movement is applied based on angle and speed. The projectile is deactivated if it:
+- Exceeds its max distance (currently commented out),
+- Collides with a wall,
+- Collides with any enemy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – Current map, used to check for wall collisions.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player that fired the projectile (not currently used).</p></li>
+<li><p><strong>enemies</strong> (<em>list</em><em>[</em><a class="reference internal" href="#entity.enemy.enemy.Enemy" title="entity.enemy.enemy.Enemy"><em>Enemy</em></a><em>]</em>) – List of potential enemy targets.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera for coordinate transformation (passed to super).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="weapon">
-<h2>Weapon<a class="headerlink" href="#weapon" title="Link to this heading"></a></h2>
+<section id="module-entity.weapon.MeleeWeapon">
+<span id="weapon"></span><h2>Weapon<a class="headerlink" href="#module-entity.weapon.MeleeWeapon" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.weapon.MeleeWeapon.</span></span><span class="sig-name descname"><span class="pre">MeleeWeapon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reach</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swing_duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon" title="Link to this definition"></a></dt>
+<dd><p>Melee weapon class representing a swinging blade weapon.</p>
+<p>Handles swing animation, collision detection with enemies, and cooldown management.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.damage">
+<span class="sig-name descname"><span class="pre">damage</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.damage" title="Link to this definition"></a></dt>
+<dd><p>Damage inflicted per hit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.cooldown">
+<span class="sig-name descname"><span class="pre">cooldown</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.cooldown" title="Link to this definition"></a></dt>
+<dd><p>Minimum cooldown time in milliseconds between swings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.reach">
+<span class="sig-name descname"><span class="pre">reach</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.reach" title="Link to this definition"></a></dt>
+<dd><p>Maximum reach of the weapon in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.swing_duration">
+<span class="sig-name descname"><span class="pre">swing_duration</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_duration" title="Link to this definition"></a></dt>
+<dd><p>Duration of the swing animation in milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.player_direction">
+<span class="sig-name descname"><span class="pre">player_direction</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.player_direction" title="Link to this definition"></a></dt>
+<dd><p>Angle (degrees) the player faces when starting attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.is_attacking">
+<span class="sig-name descname"><span class="pre">is_attacking</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.is_attacking" title="Link to this definition"></a></dt>
+<dd><p>Whether the weapon is currently swinging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.swing_direction">
+<span class="sig-name descname"><span class="pre">swing_direction</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_direction" title="Link to this definition"></a></dt>
+<dd><p>Direction of the swing (angle in degrees).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.attack_start_time">
+<span class="sig-name descname"><span class="pre">attack_start_time</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.attack_start_time" title="Link to this definition"></a></dt>
+<dd><p>Timestamp when the current swing started.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.hit_enemies">
+<span class="sig-name descname"><span class="pre">hit_enemies</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.hit_enemies" title="Link to this definition"></a></dt>
+<dd><p>Set of enemies hit in the current swing to avoid multiple hits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.swing_start_angle">
+<span class="sig-name descname"><span class="pre">swing_start_angle</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_start_angle" title="Link to this definition"></a></dt>
+<dd><p>Initial angle of the swing animation relative to player direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.swing_deviation">
+<span class="sig-name descname"><span class="pre">swing_deviation</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.swing_deviation" title="Link to this definition"></a></dt>
+<dd><p>Total angular deviation of the swing (how wide the blade swings).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.current_angle">
+<span class="sig-name descname"><span class="pre">current_angle</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.current_angle" title="Link to this definition"></a></dt>
+<dd><p>Current angle of the blade during swing or idle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.handle_length">
+<span class="sig-name descname"><span class="pre">handle_length</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.handle_length" title="Link to this definition"></a></dt>
+<dd><p>Length of the weapon handle in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.blade_length">
+<span class="sig-name descname"><span class="pre">blade_length</span></span><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.blade_length" title="Link to this definition"></a></dt>
+<dd><p>Length of the weapon blade in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reach</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swing_duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize a MeleeWeapon instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>damage</strong> (<em>int</em><em>, </em><em>optional</em>) – Damage inflicted by weapon hits. Default is 15.</p></li>
+<li><p><strong>cooldown</strong> (<em>int</em><em>, </em><em>optional</em>) – Cooldown time between attacks in milliseconds. Default is 100.</p></li>
+<li><p><strong>reach</strong> (<em>float</em><em>, </em><em>optional</em>) – Reach multiplier in tiles (converted to pixels). Default is 2.0.</p></li>
+<li><p><strong>swing_duration</strong> (<em>int</em><em>, </em><em>optional</em>) – Duration of swing animation in milliseconds. Default is 300.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.attack">
+<span class="sig-name descname"><span class="pre">attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.attack" title="Link to this definition"></a></dt>
+<dd><p>Initiates a melee attack swing if the cooldown has elapsed and no current attack is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – X-coordinate for the attack origin (unused here).</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Y-coordinate for the attack origin (unused here).</p></li>
+<li><p><strong>direction</strong> (<em>float</em>) – Player’s facing direction in degrees at attack start.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if attack started, False otherwise (e.g., on cooldown or already attacking).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.draw" title="Link to this definition"></a></dt>
+<dd><p>Draws the weapon on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – Pygame surface to draw on.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – Player instance for position reference.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_direction">
+<span class="sig-name descname"><span class="pre">get_attack_direction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.get_attack_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_direction" title="Link to this definition"></a></dt>
+<dd><p>Returns the direction angle the player faced at the start of the attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Attack start direction in degrees.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_progress">
+<span class="sig-name descname"><span class="pre">get_attack_progress</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.get_attack_progress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_attack_progress" title="Link to this definition"></a></dt>
+<dd><p>Returns the current progress of the attack swing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value between 0.0 (start) and 1.0 (end) indicating swing progress.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.get_debug_info">
+<span class="sig-name descname"><span class="pre">get_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.get_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary of debug info related to the weapon state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – Player instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Debug information including weapon position and angle.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.get_weapon_pos">
+<span class="sig-name descname"><span class="pre">get_weapon_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.get_weapon_pos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.get_weapon_pos" title="Link to this definition"></a></dt>
+<dd><p>Returns the weapon’s current position in pixels relative to the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – Player instance with grid position attributes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y) position of the weapon in pixels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.MeleeWeapon.MeleeWeapon.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/MeleeWeapon.html#MeleeWeapon.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.MeleeWeapon.MeleeWeapon.update" title="Link to this definition"></a></dt>
+<dd><p>Updates the swing animation state and checks for enemy collisions during an active swing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – Player instance with positional and directional info.</p></li>
+<li><p><strong>enemies</strong> (<em>list</em><em>, </em><em>optional</em>) – List of enemy objects to check collision against.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-entity.weapon.RangedWeapon">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.weapon.RangedWeapon.</span></span><span class="sig-name descname"><span class="pre">RangedWeapon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectile_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon" title="Link to this definition"></a></dt>
+<dd><p>RangedWeapon class represents a weapon that fires projectiles.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.damage">
+<span class="sig-name descname"><span class="pre">damage</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.damage" title="Link to this definition"></a></dt>
+<dd><p>The amount of damage dealt by each projectile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.range">
+<span class="sig-name descname"><span class="pre">range</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.range" title="Link to this definition"></a></dt>
+<dd><p>Maximum range (distance) the projectile can travel (in some unit, e.g., tiles).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.cooldown">
+<span class="sig-name descname"><span class="pre">cooldown</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.cooldown" title="Link to this definition"></a></dt>
+<dd><p>Time in milliseconds between consecutive attacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.projectile_speed">
+<span class="sig-name descname"><span class="pre">projectile_speed</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.projectile_speed" title="Link to this definition"></a></dt>
+<dd><p>Speed at which the projectile travels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.color" title="Link to this definition"></a></dt>
+<dd><p>RGB color used for drawing the weapon (optional).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.name" title="Link to this definition"></a></dt>
+<dd><p>Weapon name identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectile_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize a ranged weapon with given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>damage</strong> (<em>int</em>) – Damage per projectile (default 8).</p></li>
+<li><p><strong>range</strong> (<em>float</em>) – Maximum range of projectile in game units (default 5.0).</p></li>
+<li><p><strong>cooldown</strong> (<em>int</em>) – Attack cooldown in milliseconds (default 300).</p></li>
+<li><p><strong>projectile_speed</strong> (<em>float</em>) – Projectile movement speed (default 0.4).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.attack">
+<span class="sig-name descname"><span class="pre">attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon.attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.attack" title="Link to this definition"></a></dt>
+<dd><p>Perform an attack by firing a projectile if cooldown permits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Starting x position of the projectile (usually player’s position).</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Starting y position of the projectile.</p></li>
+<li><p><strong>direction</strong> (<em>float</em>) – Attack direction angle in degrees.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+<li><p><strong>projectiles</strong> (<em>list</em>) – Optional list to append newly created projectiles to.</p></li>
+<li><p><strong>**kwargs</strong> – Additional optional parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if attack was successful (projectile fired), False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.draw" title="Link to this definition"></a></dt>
+<dd><p>Draw the ranged weapon on the screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The surface to draw on.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player holding the weapon.</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.get_debug_info">
+<span class="sig-name descname"><span class="pre">get_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon.get_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.get_debug_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.RangedWeapon.RangedWeapon.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/RangedWeapon.html#RangedWeapon.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.RangedWeapon.RangedWeapon.update" title="Link to this definition"></a></dt>
+<dd><p>Update the weapon state each frame.
+Updates the weapon’s angle to face the mouse cursor and positions it relative to the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_time</strong> (<em>int</em>) – Current game time in milliseconds.</p></li>
+<li><p><strong>player</strong> (<a class="reference internal" href="#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player object holding the weapon.</p></li>
+<li><p><strong>enemies</strong> (<em>list</em><em>, </em><em>optional</em>) – List of enemies (not used here but available).</p></li>
+<li><p><strong>**kwargs</strong> – Additional optional parameters.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-entity.weapon.weapon">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.weapon.weapon.</span></span><span class="sig-name descname"><span class="pre">Weapon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#Weapon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.Weapon" title="Link to this definition"></a></dt>
+<dd><p>Base weapon class providing common weapon functionality.</p>
+<dl class="simple">
+<dt>Extends:</dt><dd><p>RectEntity: For position and collision hitbox handling.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.damage">
+<span class="sig-name descname"><span class="pre">damage</span></span><a class="headerlink" href="#entity.weapon.weapon.Weapon.damage" title="Link to this definition"></a></dt>
+<dd><p>Damage dealt by the weapon per attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.cooldown">
+<span class="sig-name descname"><span class="pre">cooldown</span></span><a class="headerlink" href="#entity.weapon.weapon.Weapon.cooldown" title="Link to this definition"></a></dt>
+<dd><p>Minimum cooldown time between attacks in milliseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.last_attack_time">
+<span class="sig-name descname"><span class="pre">last_attack_time</span></span><a class="headerlink" href="#entity.weapon.weapon.Weapon.last_attack_time" title="Link to this definition"></a></dt>
+<dd><p>Timestamp of the last attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.weapon_type">
+<span class="sig-name descname"><span class="pre">weapon_type</span></span><a class="headerlink" href="#entity.weapon.weapon.Weapon.weapon_type" title="Link to this definition"></a></dt>
+<dd><p>Type of weapon (MELEE or RANGED).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#entity.weapon.weapon.WeaponType" title="entity.weapon.weapon.WeaponType">WeaponType</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#Weapon.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.Weapon.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes a weapon instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – X-coordinate position.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Y-coordinate position.</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Width of the weapon’s hitbox.</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – Length of the weapon’s hitbox.</p></li>
+<li><p><strong>damage</strong> (<em>int</em><em>, </em><em>optional</em>) – Damage inflicted by the weapon. Defaults to 10.</p></li>
+<li><p><strong>cooldown</strong> (<em>int</em><em>, </em><em>optional</em>) – Cooldown time in milliseconds between attacks. Defaults to 50.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.attack">
+<span class="sig-name descname"><span class="pre">attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#Weapon.attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.Weapon.attack" title="Link to this definition"></a></dt>
+<dd><p>Attempts to perform an attack action.</p>
+<p>Should be overridden by subclasses for specific attack behavior.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – X-coordinate of attack origin.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Y-coordinate of attack origin.</p></li>
+<li><p><strong>direction</strong> (<em>any</em>) – Direction of attack (type dependent on subclass).</p></li>
+<li><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p></li>
+<li><p><strong>**kwargs</strong> – Additional optional parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if attack was performed, False if weapon is on cooldown.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.can_attack">
+<span class="sig-name descname"><span class="pre">can_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#Weapon.can_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.Weapon.can_attack" title="Link to this definition"></a></dt>
+<dd><p>Checks if the weapon can perform an attack based on its cooldown timer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_time</strong> (<em>int</em>) – Current time in milliseconds.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if cooldown period has passed and weapon can attack, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="entity.weapon.weapon.Weapon.point_on_line_at_distance">
+<span class="sig-name descname"><span class="pre">point_on_line_at_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#Weapon.point_on_line_at_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.Weapon.point_on_line_at_distance" title="Link to this definition"></a></dt>
+<dd><p>Calculates a point along the line segment from point a to b at a distance n from a.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – Starting point coordinates (x, y).</p></li>
+<li><p><strong>b</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – Ending point coordinates (x, y).</p></li>
+<li><p><strong>n</strong> (<em>float</em>) – Distance from point a along the line toward point b.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Coordinates of the point at distance n along the line.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="entity.weapon.weapon.WeaponType">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">entity.weapon.weapon.</span></span><span class="sig-name descname"><span class="pre">WeaponType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/entity/weapon/weapon.html#WeaponType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#entity.weapon.weapon.WeaponType" title="Link to this definition"></a></dt>
+<dd><p>Enum representing types of weapons.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.WeaponType.MELEE">
+<span class="sig-name descname"><span class="pre">MELEE</span></span><a class="headerlink" href="#entity.weapon.weapon.WeaponType.MELEE" title="Link to this definition"></a></dt>
+<dd><p>Melee weapon type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="entity.weapon.weapon.WeaponType.RANGED">
+<span class="sig-name descname"><span class="pre">RANGED</span></span><a class="headerlink" href="#entity.weapon.weapon.WeaponType.RANGED" title="Link to this definition"></a></dt>
+<dd><p>Ranged weapon type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">MELEE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">RANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

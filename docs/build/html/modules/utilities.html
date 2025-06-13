@@ -19,7 +19,6 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Project" href="../api/modules.html" />
     <link rel="prev" title="Maps Module" href="maps.html" /> 
 </head>
 
@@ -47,8 +46,39 @@
 <li class="toctree-l1"><a class="reference internal" href="context.html">Context Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.camera.Camera.__init__"><code class="docutils literal notranslate"><span class="pre">Camera.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.camera.Camera.apply"><code class="docutils literal notranslate"><span class="pre">Camera.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.camera.Camera.get_rect_entity"><code class="docutils literal notranslate"><span class="pre">Camera.get_rect_entity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.camera.Camera.is_visible"><code class="docutils literal notranslate"><span class="pre">Camera.is_visible()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.camera.Camera.update"><code class="docutils literal notranslate"><span class="pre">Camera.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer"><code class="docutils literal notranslate"><span class="pre">DebugRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.__init__"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.add_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.add_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.add_static_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.add_static_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.clear_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.clear_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.clear_static_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.clear_static_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.get_debug_info_copy"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.get_debug_info_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.get_static_debug_info_copy"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.get_static_debug_info_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.remove_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.remove_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.remove_static_debug_info"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.remove_static_debug_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.render"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.render()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.set_enabled"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.set_enabled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.DebugRenderer.DebugRenderer.set_static_enabled"><code class="docutils literal notranslate"><span class="pre">DebugRenderer.set_static_enabled()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.DebugRenderer.example_usage"><code class="docutils literal notranslate"><span class="pre">example_usage()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.HitboxUtilities.point_distance"><code class="docutils literal notranslate"><span class="pre">point_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.HitboxUtilities.polygons_collide"><code class="docutils literal notranslate"><span class="pre">polygons_collide()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.HitboxUtilities.rotate_point"><code class="docutils literal notranslate"><span class="pre">rotate_point()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.pathfinding.a_star_pathfinding"><code class="docutils literal notranslate"><span class="pre">a_star_pathfinding()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.pathfinding.has_line_of_sight"><code class="docutils literal notranslate"><span class="pre">has_line_of_sight()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities.pathfinding.heuristic"><code class="docutils literal notranslate"><span class="pre">heuristic()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -75,8 +105,394 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="utilities-module">
-<h1>Utilities Module<a class="headerlink" href="#utilities-module" title="Link to this heading"></a></h1>
+  <section id="module-utilities.camera">
+<span id="utilities-module"></span><h1>Utilities Module<a class="headerlink" href="#module-utilities.camera" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="utilities.camera.Camera">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utilities.camera.</span></span><span class="sig-name descname"><span class="pre">Camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera" title="Link to this definition"></a></dt>
+<dd><p>Represents a camera viewport in a tile-based game world.</p>
+<p>The camera tracks a rectangular area of the map in tile units, usually centered on
+the player or another target. It provides functionality to update its position,
+convert world coordinates to screen coordinates relative to the camera, and check
+whether a tile is visible within the camera’s view.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.camera.Camera.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Camera object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the camera viewport in tiles.</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the camera viewport in tiles.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.camera.Camera.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera.apply" title="Link to this definition"></a></dt>
+<dd><p>Convert world tile coordinates to camera-relative coordinates (screen coordinates in tiles).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> or </em><em>float</em>) – X coordinate in world tile units.</p></li>
+<li><p><strong>y</strong> (<em>int</em><em> or </em><em>float</em>) – Y coordinate in world tile units.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y) coordinates relative to the camera’s top-left corner.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.camera.Camera.get_rect_entity">
+<span class="sig-name descname"><span class="pre">get_rect_entity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera.get_rect_entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera.get_rect_entity" title="Link to this definition"></a></dt>
+<dd><p>Get the camera’s bounding rectangle as a RectEntity object in pixel coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Rectangle representing the camera’s view area in pixels,</dt><dd><p>centered on the camera’s viewport center.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="entity.html#entity.HitBox.RectangleHitbox.RectEntity" title="entity.HitBox.RectangleHitbox.RectEntity">RectEntity</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.camera.Camera.is_visible">
+<span class="sig-name descname"><span class="pre">is_visible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera.is_visible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera.is_visible" title="Link to this definition"></a></dt>
+<dd><p>Check if a tile at world coordinates (x, y) is currently visible within the camera viewport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> or </em><em>float</em>) – X coordinate in world tile units.</p></li>
+<li><p><strong>y</strong> (<em>int</em><em> or </em><em>float</em>) – Y coordinate in world tile units.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the tile is within the camera’s visible area, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.camera.Camera.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/camera.html#Camera.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.camera.Camera.update" title="Link to this definition"></a></dt>
+<dd><p>Update the camera position to center on the player.
+Ensures the camera does not move to negative coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>player</strong> (<a class="reference internal" href="entity.html#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player object, expected to have x and y attributes representing
+position in world tile coordinates (float).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-utilities.DebugRenderer">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utilities.DebugRenderer.</span></span><span class="sig-name descname"><span class="pre">DebugRenderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">128)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer" title="Link to this definition"></a></dt>
+<dd><p>A flexible debug system for Pygame that can render debug information
+both through instance methods and static methods for global access.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">128)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the debug renderer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font_size</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Size of the debug text font</p></li>
+<li><p><strong>font_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – Font name (None for default)</p></li>
+<li><p><strong>text_color</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – RGB color for debug text</p></li>
+<li><p><strong>background_color</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</span>) – RGBA color for background (None for no background)</p></li>
+<li><p><strong>padding</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Padding around the debug text block</p></li>
+<li><p><strong>line_spacing</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Extra spacing between lines</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.add_debug_info">
+<span class="sig-name descname"><span class="pre">add_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.add_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.add_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Add or update debug information for this instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.add_static_debug_info">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_static_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.add_static_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.add_static_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Add or update static debug information (accessible from anywhere).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.clear_debug_info">
+<span class="sig-name descname"><span class="pre">clear_debug_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.clear_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.clear_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Clear all instance debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.clear_static_debug_info">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear_static_debug_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.clear_static_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.clear_static_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Clear all static debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.get_debug_info_copy">
+<span class="sig-name descname"><span class="pre">get_debug_info_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.get_debug_info_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.get_debug_info_copy" title="Link to this definition"></a></dt>
+<dd><p>Get a copy of current instance debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.get_static_debug_info_copy">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_static_debug_info_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.get_static_debug_info_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.get_static_debug_info_copy" title="Link to this definition"></a></dt>
+<dd><p>Get a copy of current static debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.remove_debug_info">
+<span class="sig-name descname"><span class="pre">remove_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.remove_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.remove_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Remove debug information for this instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.remove_static_debug_info">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_static_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.remove_static_debug_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.remove_static_debug_info" title="Link to this definition"></a></dt>
+<dd><p>Remove static debug information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">10)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.render"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.render" title="Link to this definition"></a></dt>
+<dd><p>Render debug information to the surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></span>) – Pygame surface to render to</p></li>
+<li><p><strong>position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – Top-left position to start rendering</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.set_enabled">
+<span class="sig-name descname"><span class="pre">set_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.set_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.set_enabled" title="Link to this definition"></a></dt>
+<dd><p>Enable/disable debug rendering for this instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.DebugRenderer.set_static_enabled">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_static_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#DebugRenderer.set_static_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.DebugRenderer.set_static_enabled" title="Link to this definition"></a></dt>
+<dd><p>Enable/disable static debug rendering globally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.DebugRenderer.example_usage">
+<span class="sig-prename descclassname"><span class="pre">utilities.DebugRenderer.</span></span><span class="sig-name descname"><span class="pre">example_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/DebugRenderer.html#example_usage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.DebugRenderer.example_usage" title="Link to this definition"></a></dt>
+<dd><p>Example of how to use the DebugRenderer in a Pygame game.</p>
+</dd></dl>
+
+<dl class="py function" id="module-utilities.HitboxUtilities">
+<dt class="sig sig-object py" id="utilities.HitboxUtilities.point_distance">
+<span class="sig-prename descclassname"><span class="pre">utilities.HitboxUtilities.</span></span><span class="sig-name descname"><span class="pre">point_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/HitboxUtilities.html#point_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.HitboxUtilities.point_distance" title="Link to this definition"></a></dt>
+<dd><p>Calculate the Euclidean distance between two points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<em>tuple</em>) – (x, y) coordinates of the first point.</p></li>
+<li><p><strong>p2</strong> (<em>tuple</em>) – (x, y) coordinates of the second point.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distance between the two points.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.HitboxUtilities.polygons_collide">
+<span class="sig-prename descclassname"><span class="pre">utilities.HitboxUtilities.</span></span><span class="sig-name descname"><span class="pre">polygons_collide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/HitboxUtilities.html#polygons_collide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.HitboxUtilities.polygons_collide" title="Link to this definition"></a></dt>
+<dd><p>Check if two polygons collide using the Separating Axis Theorem (SAT).</p>
+<p>SAT states that two convex polygons do not overlap if there exists
+an axis along which the projections of the two polygons do not overlap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poly1</strong> (<em>list</em><em> of </em><em>tuples</em>) – List of (x, y) tuples representing the vertices of the first polygon.</p></li>
+<li><p><strong>poly2</strong> (<em>list</em><em> of </em><em>tuples</em>) – List of (x, y) tuples representing the vertices of the second polygon.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if polygons collide (overlap), False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.HitboxUtilities.rotate_point">
+<span class="sig-prename descclassname"><span class="pre">utilities.HitboxUtilities.</span></span><span class="sig-name descname"><span class="pre">rotate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/HitboxUtilities.html#rotate_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.HitboxUtilities.rotate_point" title="Link to this definition"></a></dt>
+<dd><p>Rotate a point around a given origin by an angle in degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>tuple</em>) – (x, y) coordinates of the point to rotate.</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – Rotation angle in degrees.</p></li>
+<li><p><strong>origin</strong> (<em>tuple</em>) – (x, y) coordinates of the rotation origin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y) coordinates of the rotated point.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-utilities.pathfinding">
+<dt class="sig sig-object py" id="utilities.pathfinding.a_star_pathfinding">
+<span class="sig-prename descclassname"><span class="pre">utilities.pathfinding.</span></span><span class="sig-name descname"><span class="pre">a_star_pathfinding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/pathfinding.html#a_star_pathfinding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.pathfinding.a_star_pathfinding" title="Link to this definition"></a></dt>
+<dd><p>A* pathfinding algorithm to find the shortest path from start to goal on a grid map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_x</strong> (<em>float</em><em> or </em><em>int</em>) – Starting x coordinate (tile).</p></li>
+<li><p><strong>start_y</strong> (<em>float</em><em> or </em><em>int</em>) – Starting y coordinate (tile).</p></li>
+<li><p><strong>goal_x</strong> (<em>float</em><em> or </em><em>int</em>) – Goal x coordinate (tile).</p></li>
+<li><p><strong>goal_y</strong> (<em>float</em><em> or </em><em>int</em>) – Goal y coordinate (tile).</p></li>
+<li><p><strong>game_map</strong> (<em>object</em>) – Map object that must implement is_wall(x, y) method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>List of (x, y) tile coordinates representing the path from start to goal.</dt><dd><p>Returns empty list if no path exists or goal is a wall.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of tuples</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.pathfinding.has_line_of_sight">
+<span class="sig-prename descclassname"><span class="pre">utilities.pathfinding.</span></span><span class="sig-name descname"><span class="pre">has_line_of_sight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/pathfinding.html#has_line_of_sight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.pathfinding.has_line_of_sight" title="Link to this definition"></a></dt>
+<dd><p>Check if there is a clear line of sight between two points on a grid using Bresenham’s line algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>float</em><em> or </em><em>int</em>) – Starting x coordinate.</p></li>
+<li><p><strong>y0</strong> (<em>float</em><em> or </em><em>int</em>) – Starting y coordinate.</p></li>
+<li><p><strong>x1</strong> (<em>float</em><em> or </em><em>int</em>) – Ending x coordinate.</p></li>
+<li><p><strong>y1</strong> (<em>float</em><em> or </em><em>int</em>) – Ending y coordinate.</p></li>
+<li><p><strong>game_map</strong> (<a class="reference internal" href="maps.html#map.map.Map" title="map.map.Map"><em>Map</em></a>) – Map object with method is_wall(x, y) that returns True if position is blocked.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if line of sight exists (no walls between points), False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.pathfinding.heuristic">
+<span class="sig-prename descclassname"><span class="pre">utilities.pathfinding.</span></span><span class="sig-name descname"><span class="pre">heuristic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/utilities/pathfinding.html#heuristic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.pathfinding.heuristic" title="Link to this definition"></a></dt>
+<dd><p>Heuristic function for A* algorithm, using Manhattan distance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>tuple</em>) – (x, y) coordinates of point a.</p></li>
+<li><p><strong>b</strong> (<em>tuple</em>) – (x, y) coordinates of point b.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Manhattan distance between points a and b.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -84,7 +500,6 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="maps.html" class="btn btn-neutral float-left" title="Maps Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../api/modules.html" class="btn btn-neutral float-right" title="Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

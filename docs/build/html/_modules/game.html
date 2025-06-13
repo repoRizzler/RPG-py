@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>game &mdash; RPG project 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RPG project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/context.html">Context Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/entity.html">Entity Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/maps.html">Maps Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/utilities.html">Utilities Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RPG project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">game</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for game</h1><div class="highlight"><pre>
+<span></span><span class="c1"># game.py - Game class for handling main game logic</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">context.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">BLACK</span><span class="p">,</span> <span class="n">DEBUG_MODE</span><span class="p">,</span> <span class="n">BASIC_VIEW_WIDTH</span><span class="p">,</span> <span class="n">BASIC_VIEW_HEIGHT</span><span class="p">,</span> <span class="n">VIEWPORT_WIDTH</span><span class="p">,</span> <span class="n">VIEWPORT_HEIGHT</span><span class="p">,</span> \
+    <span class="n">VIEW_WIDTH_PX</span><span class="p">,</span> <span class="n">VIEW_HEIGHT_PX</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.player.player</span><span class="w"> </span><span class="kn">import</span> <span class="n">Player</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utilities.DebugRenderer</span><span class="w"> </span><span class="kn">import</span> <span class="n">DebugRenderer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utilities.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
+
+
+<div class="viewcode-block" id="Game">
+<a class="viewcode-back" href="../api/game.html#game.Game">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The main game controller class that manages the game loop,</span>
+<span class="sd">    game state, player, enemies, projectiles, camera, and rendering.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        general_view (bool): If True, shows the entire map instead of the viewport.</span>
+<span class="sd">        screen (pygame.Surface): The main screen surface for rendering.</span>
+<span class="sd">        clock (pygame.time.Clock): Clock object to manage frame rate.</span>
+<span class="sd">        running (bool): Controls the main loop execution.</span>
+<span class="sd">        current_time (int): Current game time in milliseconds.</span>
+<span class="sd">        map (Map): The current game map.</span>
+<span class="sd">        level (Level): The current level structure containing multiple floors.</span>
+<span class="sd">        current_floor (int): Index of the currently active floor.</span>
+<span class="sd">        player (Player): The player entity.</span>
+<span class="sd">        enemies (list): List of enemy entities on the current floor.</span>
+<span class="sd">        projectiles (list): List of active projectiles in the game.</span>
+<span class="sd">        camera (Camera): Camera that defines the current view window.</span>
+<span class="sd">        debug_mode (bool): If True, renders debug information.</span>
+<span class="sd">        debug_renderer (DebugRenderer): Utility to show debug data on the screen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Game.__init__">
+<a class="viewcode-back" href="../api/game.html#game.Game.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Game class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            screen (pygame.Surface): The main surface to draw the game on.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">general_view</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">screen</span> <span class="o">=</span> <span class="n">screen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_time</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Game objects will be initialized in the setup method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_floor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># debug utils</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_mode</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span> <span class="o">=</span> <span class="n">DebugRenderer</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Game.setup">
+<a class="viewcode-back" href="../api/game.html#game.Game.setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up the initial game state with the given level and map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            level (Level): The level object containing floor data and entities.</span>
+<span class="sd">            game_map (Map): The map layout for rendering and collision.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">level</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">game_map</span>
+
+        <span class="n">player_pos</span> <span class="o">=</span> <span class="n">level</span><span class="o">.</span><span class="n">floors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">player_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="n">player_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">player_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span> <span class="o">=</span> <span class="n">level</span><span class="o">.</span><span class="n">floors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_enemies</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># self.camera = Camera(BASIC_VIEW_WIDTH, BASIC_VIEW_HEIGHT)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">VIEWPORT_WIDTH</span><span class="p">,</span> <span class="n">VIEWPORT_HEIGHT</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Game.handle_events">
+<a class="viewcode-back" href="../api/game.html#game.Game.handle_events">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle input events such as quit requests.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Game.update">
+<a class="viewcode-back" href="../api/game.html#game.Game.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the game state, including player, enemies, projectiles,</span>
+<span class="sd">        and debug information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_time</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">get_ticks</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="c1"># Handle keyboard input for player movement</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_1</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">change_weapon_up</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_2</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">change_weapon_down</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_w</span><span class="p">]:</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_s</span><span class="p">]:</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_a</span><span class="p">]:</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_d</span><span class="p">]:</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_e</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">on_action</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">attack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">current_time</span><span class="p">,</span><span class="n">projectiles</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span><span class="p">,</span> <span class="n">enemies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">,</span> <span class="n">game_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">)</span>
+        <span class="c1"># Toggle key (TAB) to switch view modea</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_TAB</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">general_view</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">general_view</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;on camera change&quot;</span><span class="p">)</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>  <span class="c1"># Small delay to prevent rapid toggling</span>
+        <span class="c1"># pass</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_time</span><span class="p">)</span>
+        <span class="c1"># Update enemies</span>
+        <span class="k">for</span> <span class="n">enemy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">:</span>
+            <span class="n">enemy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_time</span><span class="p">)</span>
+
+        <span class="c1"># Update projectiles</span>
+        <span class="k">for</span> <span class="n">projectile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span><span class="p">[:]:</span>
+            <span class="n">projectile</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">projectile</span><span class="o">.</span><span class="n">active</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">projectile</span><span class="p">)</span>
+
+        <span class="c1"># debug setup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">add_debug_info</span><span class="p">(</span><span class="s2">&quot;PLAYER DATA&quot;</span><span class="p">,</span> <span class="s2">&quot;==========================&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">add_debug_info</span><span class="p">(</span><span class="s2">&quot;player pos:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;x:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2"> y:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">add_debug_info</span><span class="p">(</span><span class="s2">&quot;player-mouse direction:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">get_angle_to_mouse</span><span class="p">())</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">add_debug_info</span><span class="p">(</span><span class="s2">&quot;WEAPON DATA&quot;</span><span class="p">,</span> <span class="s2">&quot;==========================&quot;</span><span class="p">)</span>
+
+
+        <span class="n">player_weapon_debug_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">get_weapon_debug_info</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">player_weapon_debug_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">player_weapon_debug_dict</span><span class="p">:</span>
+                <span class="n">item</span> <span class="o">=</span> <span class="n">player_weapon_debug_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">add_debug_info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Game.render">
+<a class="viewcode-back" href="../api/game.html#game.Game.render">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Render the current game state including the map, player, enemies,</span>
+<span class="sd">        projectiles, and optionally debug info.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Clear the screen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">BLACK</span><span class="p">)</span>
+
+        <span class="c1"># Draw map in current view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">)</span>
+
+
+        <span class="c1"># Draw camera border</span>
+        <span class="n">camera_rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">get_rect_entity</span><span class="p">()</span>
+        <span class="n">camera_rect</span><span class="o">.</span><span class="n">draw_hit_box</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">)</span>
+
+        <span class="c1"># Draw projectiles</span>
+        <span class="k">for</span> <span class="n">projectile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">projectiles</span><span class="p">:</span>
+            <span class="n">projectile</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">)</span>
+
+        <span class="c1"># Draw enemies</span>
+        <span class="k">for</span> <span class="n">enemy</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">:</span>
+            <span class="n">enemy</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="p">)</span>
+
+        <span class="c1"># Draw player</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_time</span><span class="p">)</span>
+
+        <span class="c1"># add debug info</span>
+        <span class="k">if</span> <span class="n">DEBUG_MODE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">debug_renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">general_view</span><span class="p">:</span>
+            <span class="c1"># Show entire map</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">width</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">height</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Reset to viewport size (e.g., 15x10)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">VIEWPORT_WIDTH</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">VIEWPORT_HEIGHT</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+
+
+        <span class="c1"># Update display</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Game.run">
+<a class="viewcode-back" href="../api/game.html#game.Game.run">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Render the current game state including the map, player, enemies,</span>
+<span class="sd">        projectiles, and optionally debug info.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_events</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># 60 FPS</span>
+
+        <span class="c1"># Cleanup when game ends</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Game.on_action">
+<a class="viewcode-back" href="../api/game.html#game.Game.on_action">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle special action input, such as transitioning to the next floor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">get_floor_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_floor</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_floor</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">floor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">get_floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_floor</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">set_floor</span><span class="p">(</span><span class="n">floor</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">floor</span><span class="o">.</span><span class="n">player_start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">floor</span><span class="o">.</span><span class="n">player_start</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">on_game_end</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Game.on_game_end">
+<a class="viewcode-back" href="../api/game.html#game.Game.on_game_end">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_game_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle logic for when the game ends.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, s28436.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

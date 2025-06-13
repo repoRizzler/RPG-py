@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>entity.enemy.enemy &mdash; RPG project 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            RPG project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/context.html">Context Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/entity.html">Entity Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/maps.html">Maps Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utilities.html">Utilities Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RPG project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">entity.enemy.enemy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for entity.enemy.enemy</h1><div class="highlight"><pre>
+<span></span><span class="c1"># enemy.py - Enemy class and AI state machine</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">context.context</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">context.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">TILE_SIZE</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">WHITE</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="n">GREY</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.HitBox.RectangleHitbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">RectEntity</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utilities.pathfinding</span><span class="w"> </span><span class="kn">import</span> <span class="n">a_star_pathfinding</span>
+
+
+<span class="c1"># Enum for enemy states</span>
+<div class="viewcode-block" id="EnemyState">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.EnemyState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EnemyState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">IDLE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">CHASE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ATTACK</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">COOLDOWN</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">DEAD</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Enemy">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="p">(</span><span class="n">RectEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base Enemy class with common AI behavior.</span>
+<span class="sd">    Extends RectEntity for hitbox handling and collision.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        x (int): Enemy&#39;s x position on the map.</span>
+<span class="sd">        y (int): Enemy&#39;s y position on the map.</span>
+<span class="sd">        state (EnemyState): Current state of the enemy (e.g. IDLE, CHASE).</span>
+<span class="sd">        detection_radius (int): Radius within which the player can be detected.</span>
+<span class="sd">        attack_radius (int): Radius within which the enemy can attack.</span>
+<span class="sd">        attack_damage (int): Damage dealt by the enemy.</span>
+<span class="sd">        path (list[tuple[int, int]]): Sequence of grid cells toward the target.</span>
+<span class="sd">        next_attack_time (int): Next allowed time for attack.</span>
+<span class="sd">        attack_cooldown (int): Time delay between attacks in milliseconds.</span>
+<span class="sd">        color (Color): Debug color used for drawing the enemy.</span>
+<span class="sd">        hp (int): Hit points of the enemy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Enemy.__init__">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Initializes a base Enemy instance. Not intended to be used directly—meant to be extended by enemy type subclasses.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (int): X-coordinate on the map grid.</span>
+<span class="sd">            y (int): Y-coordinate on the map grid.</span>
+<span class="sd">            width (int): Width of the enemy in map units.</span>
+<span class="sd">            height (int): Height of the enemy in map units.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">width</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">EnemyState</span><span class="o">.</span><span class="n">IDLE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">detection_radius</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack_radius</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Will be set by subclasses</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack_damage</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_attack_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack_cooldown</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># milliseconds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span>  <span class="c1"># Default color, overridden by subclasses</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Enemy.draw">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.draw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">screen</span><span class="p">,</span><span class="n">camera</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draws the enemy&#39;s current state indicator on the screen.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            screen (pygame.Surface): The surface to draw on.</span>
+<span class="sd">            camera (Camera): The camera object to adjust position relative to screen.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_center</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+
+        <span class="c1"># Draw state indicator</span>
+        <span class="n">state_colors</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">EnemyState</span><span class="o">.</span><span class="n">IDLE</span><span class="p">:</span> <span class="n">WHITE</span><span class="p">,</span>
+            <span class="n">EnemyState</span><span class="o">.</span><span class="n">CHASE</span><span class="p">:</span> <span class="n">GREEN</span><span class="p">,</span>
+            <span class="n">EnemyState</span><span class="o">.</span><span class="n">ATTACK</span><span class="p">:</span> <span class="n">RED</span><span class="p">,</span>
+            <span class="n">EnemyState</span><span class="o">.</span><span class="n">COOLDOWN</span><span class="p">:</span> <span class="n">GREY</span><span class="p">,</span>
+            <span class="n">EnemyState</span><span class="o">.</span><span class="n">DEAD</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">BLACK</span>
+        <span class="p">}</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">],</span>
+                           <span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span> <span class="o">-</span> <span class="n">TILE_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">TILE_SIZE</span> <span class="o">//</span> <span class="mi">8</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Enemy.distance_to">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.distance_to">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the Euclidean distance to a target (x, y) position.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (float): Target X position.</span>
+<span class="sd">            y (float): Target Y position.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Distance to the target.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Enemy.can_see_player">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.can_see_player">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">can_see_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determines whether the enemy can see the player.</span>
+
+<span class="sd">        Checks both distance (detection radius) and line of sight using Bresenham&#39;s algorithm.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            player (Player): The player object.</span>
+<span class="sd">            game_map (Map): The current game map.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the player is visible, otherwise False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check if player is within detection radius</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">detection_radius</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Implement improved line-of-sight check using Bresenham&#39;s line algorithm</span>
+        <span class="c1"># Get grid coordinates of enemy and player</span>
+        <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="c1"># Calculate line path between enemy and player</span>
+        <span class="c1"># Implementation of Bresenham&#39;s line algorithm</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">end_x</span> <span class="o">-</span> <span class="n">start_x</span><span class="p">)</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">end_y</span> <span class="o">-</span> <span class="n">start_y</span><span class="p">)</span>
+        <span class="n">sx</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">start_x</span> <span class="o">&lt;</span> <span class="n">end_x</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">sy</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">start_y</span> <span class="o">&lt;</span> <span class="n">end_y</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">-</span> <span class="n">dy</span>
+
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span>
+
+        <span class="c1"># Check each cell along the line</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">end_x</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">end_y</span><span class="p">):</span>
+            <span class="c1"># Check if current cell is a wall</span>
+            <span class="k">if</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">start_x</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">start_y</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Wall blocks line of sight</span>
+
+            <span class="c1"># Move to the next cell</span>
+            <span class="n">e2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">err</span>
+            <span class="k">if</span> <span class="n">e2</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">dy</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">-=</span> <span class="n">dy</span>
+                <span class="n">x</span> <span class="o">+=</span> <span class="n">sx</span>
+            <span class="k">if</span> <span class="n">e2</span> <span class="o">&lt;</span> <span class="n">dx</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">+=</span> <span class="n">dx</span>
+                <span class="n">y</span> <span class="o">+=</span> <span class="n">sy</span>
+
+            <span class="c1"># Edge case: check if we&#39;re about to cross a wall corner diagonally</span>
+            <span class="c1"># This prevents &quot;shooting through corners&quot;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">game_map</span><span class="o">.</span><span class="n">is_wall</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">sx</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">and</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">sy</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># If we reached the player without hitting a wall, there&#39;s line of sight</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Enemy.move_toward_player">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.move_toward_player">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move_toward_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves the enemy toward the player using A* pathfinding.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            player (Player): The player instance.</span>
+<span class="sd">            game_map (Map): The current game map.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># A* pathfinding implementation</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>  <span class="c1"># Occasionally recalculate path</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">a_star_pathfinding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">game_map</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">next_x</span><span class="p">,</span> <span class="n">next_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="n">next_x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="n">next_y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+
+            <span class="c1"># Normalize movement vector</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dx</span> <span class="o">/=</span> <span class="n">length</span>
+                <span class="n">dy</span> <span class="o">/=</span> <span class="n">length</span>
+
+            <span class="c1"># Move toward next point</span>
+            <span class="n">new_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+            <span class="n">new_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+
+            <span class="c1"># Check if we&#39;ve reached the next point</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_x</span> <span class="o">-</span> <span class="n">next_x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_y</span> <span class="o">-</span> <span class="n">next_y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="c1"># Check for wall collision</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall</span><span class="p">(</span><span class="n">new_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">new_x</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">new_y</span></div>
+
+
+<div class="viewcode-block" id="Enemy.heuristic">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.heuristic">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">heuristic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the Manhattan distance between two points.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            a (tuple[int, int]): First point (x, y).</span>
+<span class="sd">            b (tuple[int, int]): Second point (x, y).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Manhattan distance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Enemy.update">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">camera</span> <span class="p">,</span><span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">,</span> <span class="n">projectiles</span><span class="p">,</span> <span class="n">current_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Updates the enemy&#39;s behavior and position based on its state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            camera (Camera): Camera used to offset screen position.</span>
+<span class="sd">            player (Player): The player object.</span>
+<span class="sd">            game_map (Map): The current map.</span>
+<span class="sd">            projectiles (list[Projectile]): List of active projectiles.</span>
+<span class="sd">            current_time (int): Current time in milliseconds.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># IDLE state logic</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">EnemyState</span><span class="o">.</span><span class="n">IDLE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_see_player</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">EnemyState</span><span class="o">.</span><span class="n">CHASE</span>
+
+        <span class="c1"># CHASE state logic - basic movement</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">EnemyState</span><span class="o">.</span><span class="n">CHASE</span><span class="p">:</span>
+           <span class="c1">#==== uncomment to make eneny forget about player when out of reach =======================</span>
+            <span class="c1"># if not self.can_see_player(player, game_map):</span>
+            <span class="c1">#     # print(f&quot;Enemy lost sight of player, changing to IDLE state&quot;)</span>
+            <span class="c1">#     self.state = EnemyState.IDLE</span>
+            <span class="c1">#     return</span>
+            <span class="c1"># Check if in attack range</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attack_radius</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_see_player</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+                <span class="c1"># print(f&quot;Enemy in attack range, preparing to attack&quot;)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">prepare_attack</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># print(f&quot;Enemy moving toward player&quot;)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">move_toward_player</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">game_map</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_center</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">update_pos</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Enemy.prepare_attack">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.prepare_attack">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prepare_attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Placeholder for attack logic. To be overridden by subclasses.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            current_time (int): Current time in milliseconds.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Enemy.take_damage">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.take_damage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">take_damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reduces enemy HP by a given damage amount. Transitions to DEAD state if HP falls below 0.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            damage (int): Amount of damage received.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">-=</span> <span class="n">damage</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;attack on enemy&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;enemy hp: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">EnemyState</span><span class="o">.</span><span class="n">DEAD</span></div>
+
+<div class="viewcode-block" id="Enemy.get_center">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.enemy.enemy.Enemy.get_center">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the center coordinates of the enemy relative to the camera, in screen pixels.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            camera (Camera): Camera object for coordinate transformation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[int, int]: (x, y) center screen coordinates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">center_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+        <span class="n">center_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, s28436.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

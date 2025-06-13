@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>entity.weapon.weapon &mdash; RPG project 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            RPG project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/context.html">Context Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/entity.html">Entity Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/maps.html">Maps Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utilities.html">Utilities Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RPG project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">entity.weapon.weapon</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for entity.weapon.weapon</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.projectile</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="WeaponType">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.WeaponType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WeaponType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum representing types of weapons.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        MELEE (int): Melee weapon type.</span>
+<span class="sd">        RANGED (int): Ranged weapon type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">MELEE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">RANGED</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+
+<div class="viewcode-block" id="Weapon">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.Weapon">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Weapon</span><span class="p">(</span><span class="n">RectEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base weapon class providing common weapon functionality.</span>
+
+<span class="sd">    Extends:</span>
+<span class="sd">        RectEntity: For position and collision hitbox handling.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        damage (int): Damage dealt by the weapon per attack.</span>
+<span class="sd">        cooldown (int): Minimum cooldown time between attacks in milliseconds.</span>
+<span class="sd">        last_attack_time (int): Timestamp of the last attack.</span>
+<span class="sd">        weapon_type (WeaponType or None): Type of weapon (MELEE or RANGED).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Weapon.__init__">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.Weapon.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">damage</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Initializes a weapon instance.</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">           x (float): X-coordinate position.</span>
+<span class="sd">           y (float): Y-coordinate position.</span>
+<span class="sd">           width (float): Width of the weapon&#39;s hitbox.</span>
+<span class="sd">           length (float): Length of the weapon&#39;s hitbox.</span>
+<span class="sd">           damage (int, optional): Damage inflicted by the weapon. Defaults to 10.</span>
+<span class="sd">           cooldown (int, optional): Cooldown time in milliseconds between attacks. Defaults to 50.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cooldown</span> <span class="o">=</span> <span class="n">cooldown</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_attack_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon_type</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="Weapon.can_attack">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.Weapon.can_attack">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">can_attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if the weapon can perform an attack based on its cooldown timer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            current_time (int): Current time in milliseconds.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if cooldown period has passed and weapon can attack, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">current_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_attack_time</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cooldown</span></div>
+
+
+<div class="viewcode-block" id="Weapon.attack">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.Weapon.attack">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attempts to perform an attack action.</span>
+
+<span class="sd">        Should be overridden by subclasses for specific attack behavior.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (float): X-coordinate of attack origin.</span>
+<span class="sd">            y (float): Y-coordinate of attack origin.</span>
+<span class="sd">            direction (any): Direction of attack (type dependent on subclass).</span>
+<span class="sd">            current_time (int): Current time in milliseconds.</span>
+<span class="sd">            **kwargs: Additional optional parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if attack was performed, False if weapon is on cooldown.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">can_attack</span><span class="p">(</span><span class="n">current_time</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_attack_time</span> <span class="o">=</span> <span class="n">current_time</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Weapon.point_on_line_at_distance">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.weapon.weapon.Weapon.point_on_line_at_distance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">point_on_line_at_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates a point along the line segment from point a to b at a distance n from a.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            a (tuple[float, float]): Starting point coordinates (x, y).</span>
+<span class="sd">            b (tuple[float, float]): Ending point coordinates (x, y).</span>
+<span class="sd">            n (float): Distance from point a along the line toward point b.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[float, float]: Coordinates of the point at distance n along the line.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># a and b are 3D points like (x, y, z)</span>
+        <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span>  <span class="o">=</span> <span class="n">a</span>
+        <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">b</span>
+
+        <span class="c1"># Direction vector d = b - a</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">bx</span> <span class="o">-</span> <span class="n">ax</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">by</span> <span class="o">-</span> <span class="n">ay</span>
+
+        <span class="c1"># Length of vector d</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Unit direction vector</span>
+        <span class="n">ux</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">/</span> <span class="n">length</span>
+        <span class="n">uy</span> <span class="o">=</span> <span class="n">dy</span> <span class="o">/</span> <span class="n">length</span>
+
+        <span class="c1"># New point at distance n from a</span>
+        <span class="n">cx</span> <span class="o">=</span> <span class="n">ax</span> <span class="o">+</span> <span class="n">ux</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">cy</span> <span class="o">=</span> <span class="n">ay</span> <span class="o">+</span> <span class="n">uy</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="k">return</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_distance_to_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the shortest distance from a point to a line segment.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            px (float): X-coordinate of the point.</span>
+<span class="sd">            py (float): Y-coordinate of the point.</span>
+<span class="sd">            x1 (float): X-coordinate of the first endpoint of the segment.</span>
+<span class="sd">            y1 (float): Y-coordinate of the first endpoint of the segment.</span>
+<span class="sd">            x2 (float): X-coordinate of the second endpoint of the segment.</span>
+<span class="sd">            y2 (float): Y-coordinate of the second endpoint of the segment.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Minimum distance from the point to the line segment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">line_mag_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">line_mag_sq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">px</span> <span class="o">-</span> <span class="n">x1</span><span class="p">,</span> <span class="n">py</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span>  <span class="c1"># line is a point</span>
+
+        <span class="c1"># Projection factor</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">py</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">))</span> <span class="o">/</span> <span class="n">line_mag_sq</span><span class="p">))</span>
+        <span class="n">proj_x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span>
+        <span class="n">proj_y</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">px</span> <span class="o">-</span> <span class="n">proj_x</span><span class="p">,</span> <span class="n">py</span> <span class="o">-</span> <span class="n">proj_y</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, s28436.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

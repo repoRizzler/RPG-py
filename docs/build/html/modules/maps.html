@@ -46,9 +46,53 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="context.html">Context Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity.html">Entity Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Maps Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Maps Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#map.floor.Floor"><code class="docutils literal notranslate"><span class="pre">Floor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.__init__"><code class="docutils literal notranslate"><span class="pre">Floor.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.add_enemy"><code class="docutils literal notranslate"><span class="pre">Floor.add_enemy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.add_item"><code class="docutils literal notranslate"><span class="pre">Floor.add_item()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.get_enemies"><code class="docutils literal notranslate"><span class="pre">Floor.get_enemies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.get_enemies_at"><code class="docutils literal notranslate"><span class="pre">Floor.get_enemies_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.get_items_at"><code class="docutils literal notranslate"><span class="pre">Floor.get_items_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.get_spawn_points"><code class="docutils literal notranslate"><span class="pre">Floor.get_spawn_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.get_tile"><code class="docutils literal notranslate"><span class="pre">Floor.get_tile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.is_walkable"><code class="docutils literal notranslate"><span class="pre">Floor.is_walkable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.remove_enemies_at"><code class="docutils literal notranslate"><span class="pre">Floor.remove_enemies_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.remove_items_at"><code class="docutils literal notranslate"><span class="pre">Floor.remove_items_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.set_tile"><code class="docutils literal notranslate"><span class="pre">Floor.set_tile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.floor.Floor.to_dict"><code class="docutils literal notranslate"><span class="pre">Floor.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#map.Level.Level"><code class="docutils literal notranslate"><span class="pre">Level</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.__init__"><code class="docutils literal notranslate"><span class="pre">Level.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.add_floor"><code class="docutils literal notranslate"><span class="pre">Level.add_floor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.get_floor"><code class="docutils literal notranslate"><span class="pre">Level.get_floor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.get_floor_count"><code class="docutils literal notranslate"><span class="pre">Level.get_floor_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.remove_floor"><code class="docutils literal notranslate"><span class="pre">Level.remove_floor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.to_dict"><code class="docutils literal notranslate"><span class="pre">Level.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.Level.Level.validate_level"><code class="docutils literal notranslate"><span class="pre">Level.validate_level()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#map.map.Map"><code class="docutils literal notranslate"><span class="pre">Map</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.__init__"><code class="docutils literal notranslate"><span class="pre">Map.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.draw"><code class="docutils literal notranslate"><span class="pre">Map.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.is_exit"><code class="docutils literal notranslate"><span class="pre">Map.is_exit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.is_wall"><code class="docutils literal notranslate"><span class="pre">Map.is_wall()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.is_wall_area"><code class="docutils literal notranslate"><span class="pre">Map.is_wall_area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.on_exit"><code class="docutils literal notranslate"><span class="pre">Map.on_exit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.map.Map.set_floor"><code class="docutils literal notranslate"><span class="pre">Map.set_floor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#map.MapUtility.MapUtility"><code class="docutils literal notranslate"><span class="pre">MapUtility</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map.MapUtility.MapUtility.get_level_info"><code class="docutils literal notranslate"><span class="pre">MapUtility.get_level_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.MapUtility.MapUtility.list_map_files"><code class="docutils literal notranslate"><span class="pre">MapUtility.list_map_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.MapUtility.MapUtility.load_level"><code class="docutils literal notranslate"><span class="pre">MapUtility.load_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map.MapUtility.MapUtility.save_level"><code class="docutils literal notranslate"><span class="pre">MapUtility.save_level()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">Project</a></li>
 </ul>
 
         </div>
@@ -75,8 +119,456 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="maps-module">
-<h1>Maps Module<a class="headerlink" href="#maps-module" title="Link to this heading"></a></h1>
+  <section id="module-map.floor">
+<span id="maps-module"></span><h1>Maps Module<a class="headerlink" href="#module-map.floor" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="map.floor.Floor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">map.floor.</span></span><span class="sig-name descname"><span class="pre">Floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor" title="Link to this definition"></a></dt>
+<dd><p>Represents a single floor in a level with all its entities and terrain.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize a floor from data dictionary or create empty floor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>floor_data</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Dictionary containing floor data from JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.add_enemy">
+<span class="sig-name descname"><span class="pre">add_enemy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemy_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.add_enemy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.add_enemy" title="Link to this definition"></a></dt>
+<dd><p>Add enemy at position. Returns True if successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.add_item">
+<span class="sig-name descname"><span class="pre">add_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_subtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.add_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.add_item" title="Link to this definition"></a></dt>
+<dd><p>Add item at position. Returns True if successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.get_enemies">
+<span class="sig-name descname"><span class="pre">get_enemies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.get_enemies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.get_enemies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.get_enemies_at">
+<span class="sig-name descname"><span class="pre">get_enemies_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.get_enemies_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.get_enemies_at" title="Link to this definition"></a></dt>
+<dd><p>Get all enemies at position (x, y).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.get_items_at">
+<span class="sig-name descname"><span class="pre">get_items_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.get_items_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.get_items_at" title="Link to this definition"></a></dt>
+<dd><p>Get all items at position (x, y).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.get_spawn_points">
+<span class="sig-name descname"><span class="pre">get_spawn_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.get_spawn_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.get_spawn_points" title="Link to this definition"></a></dt>
+<dd><p>Get all valid spawn points (walkable tiles without entities).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.get_tile">
+<span class="sig-name descname"><span class="pre">get_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.get_tile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.get_tile" title="Link to this definition"></a></dt>
+<dd><p>Get tile type at position (x, y).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.is_walkable">
+<span class="sig-name descname"><span class="pre">is_walkable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.is_walkable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.is_walkable" title="Link to this definition"></a></dt>
+<dd><p>Check if position is walkable (not a wall).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.remove_enemies_at">
+<span class="sig-name descname"><span class="pre">remove_enemies_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.remove_enemies_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.remove_enemies_at" title="Link to this definition"></a></dt>
+<dd><p>Remove all enemies at position. Returns count of removed enemies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.remove_items_at">
+<span class="sig-name descname"><span class="pre">remove_items_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.remove_items_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.remove_items_at" title="Link to this definition"></a></dt>
+<dd><p>Remove all items at position. Returns count of removed items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.set_tile">
+<span class="sig-name descname"><span class="pre">set_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.set_tile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.set_tile" title="Link to this definition"></a></dt>
+<dd><p>Set tile type at position (x, y). Returns True if successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.floor.Floor.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/floor.html#Floor.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.floor.Floor.to_dict" title="Link to this definition"></a></dt>
+<dd><p>Convert floor to dictionary for JSON serialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-map.Level">
+<dt class="sig sig-object py" id="map.Level.Level">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">map.Level.</span></span><span class="sig-name descname"><span class="pre">Level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level" title="Link to this definition"></a></dt>
+<dd><p>Represents a complete level with multiple floors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize level from data dictionary or create empty level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level_data</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Dictionary containing level data from JSON</p></li>
+<li><p><strong>filename</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Original filename if loaded from file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.add_floor">
+<span class="sig-name descname"><span class="pre">add_floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.add_floor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.add_floor" title="Link to this definition"></a></dt>
+<dd><p>Add a new floor to the level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#map.floor.Floor" title="map.floor.Floor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Floor</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.get_floor">
+<span class="sig-name descname"><span class="pre">get_floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.get_floor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.get_floor" title="Link to this definition"></a></dt>
+<dd><p>Get floor by index. Returns None if index is invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#map.floor.Floor" title="map.floor.Floor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Floor</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.get_floor_count">
+<span class="sig-name descname"><span class="pre">get_floor_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.get_floor_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.get_floor_count" title="Link to this definition"></a></dt>
+<dd><p>Get total number of floors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.remove_floor">
+<span class="sig-name descname"><span class="pre">remove_floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.remove_floor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.remove_floor" title="Link to this definition"></a></dt>
+<dd><p>Remove floor by index. Returns True if successful.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.to_dict" title="Link to this definition"></a></dt>
+<dd><p>Convert level to dictionary for JSON serialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.Level.Level.validate_level">
+<span class="sig-name descname"><span class="pre">validate_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/Level.html#Level.validate_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.Level.Level.validate_level" title="Link to this definition"></a></dt>
+<dd><p>Validate level structure and return list of issues found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-map.map">
+<dt class="sig sig-object py" id="map.map.Map">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">map.map.</span></span><span class="sig-name descname"><span class="pre">Map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map" title="Link to this definition"></a></dt>
+<dd><p>Represents a game map composed of a grid of tiles, including floors, walls, and exits.</p>
+<p>The map is constructed from a ‘floor’ object that provides the grid layout,
+dimensions, and exit position. The Map class provides functionality for drawing
+visible tiles based on a camera view, and for querying tile properties such as walls
+and exit positions.
+.. attribute:: floor</p>
+<blockquote>
+<div><p>Floor object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Floor</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Map object from a floor object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>floor</strong> (<a class="reference internal" href="#map.floor.Floor" title="map.floor.Floor"><em>Floor</em></a>) – A floor object containing the grid layout, width, height,
+and exit position information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.draw" title="Link to this definition"></a></dt>
+<dd><p>Draw the visible portion of the map to the screen using the camera’s position and size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> (<em>pygame.Surface</em>) – The surface to draw the map tiles on.</p></li>
+<li><p><strong>camera</strong> (<a class="reference internal" href="utilities.html#utilities.camera.Camera" title="utilities.camera.Camera"><em>Camera</em></a>) – Camera object providing x, y position and visible width and height
+in tile units.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.is_exit">
+<span class="sig-name descname"><span class="pre">is_exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.is_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.is_exit" title="Link to this definition"></a></dt>
+<dd><p>Check if the tile at the specified coordinates is the exit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> or </em><em>float</em>) – X coordinate of the tile.</p></li>
+<li><p><strong>y</strong> (<em>int</em><em> or </em><em>float</em>) – Y coordinate of the tile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the tile is the exit or out of bounds, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.is_wall">
+<span class="sig-name descname"><span class="pre">is_wall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.is_wall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.is_wall" title="Link to this definition"></a></dt>
+<dd><p>Check if the tile at the specified coordinates is a wall.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> or </em><em>float</em>) – X coordinate of the tile.</p></li>
+<li><p><strong>y</strong> (<em>int</em><em> or </em><em>float</em>) – Y coordinate of the tile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the tile is a wall or out of bounds, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.is_wall_area">
+<span class="sig-name descname"><span class="pre">is_wall_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.is_wall_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.is_wall_area" title="Link to this definition"></a></dt>
+<dd><p>Check if any corner of a rectangular area intersects a wall tile.
+Useful for collision detection for entities larger than one tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – X coordinate of the top-left corner of the area.</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Y coordinate of the top-left corner of the area.</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Width of the area in tiles (default 1.0).</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Height of the area in tiles (default 1.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if any corner of the area intersects a wall tile, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.on_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.on_exit" title="Link to this definition"></a></dt>
+<dd><p>Check if the player’s bounding box is overlapping any exit tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player</strong> (<a class="reference internal" href="entity.html#entity.player.player.Player" title="entity.player.player.Player"><em>Player</em></a>) – The player object, expected to have x and y attributes.</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Width of the player’s bounding box in tiles (default 1.0).</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Height of the player’s bounding box in tiles (default 1.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if any corner of the player overlaps an exit tile, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.map.Map.set_floor">
+<span class="sig-name descname"><span class="pre">set_floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/map.html#Map.set_floor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.map.Map.set_floor" title="Link to this definition"></a></dt>
+<dd><p>Set the current floor to the provided floor object and initialize the map grid,
+width, height, and mark the exit position on the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>floor</strong> (<a class="reference internal" href="#map.floor.Floor" title="map.floor.Floor"><em>Floor</em></a>) – The floor object to use as the current map layout.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-map.MapUtility">
+<dt class="sig sig-object py" id="map.MapUtility.MapUtility">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">map.MapUtility.</span></span><span class="sig-name descname"><span class="pre">MapUtility</span></span><a class="reference internal" href="../_modules/map/MapUtility.html#MapUtility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.MapUtility.MapUtility" title="Link to this definition"></a></dt>
+<dd><p>Utility class for loading, saving, and managing map files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="map.MapUtility.MapUtility.get_level_info">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_level_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/MapUtility.html#MapUtility.get_level_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.MapUtility.MapUtility.get_level_info" title="Link to this definition"></a></dt>
+<dd><p>Get basic information about a level without fully loading it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the JSON file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with level info or None if failed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.MapUtility.MapUtility.list_map_files">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_map_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'maps'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/MapUtility.html#MapUtility.list_map_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.MapUtility.MapUtility.list_map_files" title="Link to this definition"></a></dt>
+<dd><p>List all JSON map files in directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>directory</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Directory to search for map files</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of filenames (without full path)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.MapUtility.MapUtility.load_level">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/MapUtility.html#MapUtility.load_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.MapUtility.MapUtility.load_level" title="Link to this definition"></a></dt>
+<dd><p>Load level from JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the JSON file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#map.Level.Level" title="map.Level.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">Level</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Level object or None if loading failed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="map.MapUtility.MapUtility.save_level">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/map/MapUtility.html#MapUtility.save_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#map.MapUtility.MapUtility.save_level" title="Link to this definition"></a></dt>
+<dd><p>Save level to JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#map.Level.Level" title="map.Level.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">Level</span></code></a></span>) – Level object to save</p></li>
+<li><p><strong>filepath</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path where to save the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if successful, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

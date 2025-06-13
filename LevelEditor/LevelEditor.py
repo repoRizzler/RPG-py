@@ -7,6 +7,7 @@ import os
 TILE_SIZE = 32  # Base tile size, used for zooming
 DEFAULT_WIDTH = 30
 DEFAULT_HEIGHT = 20
+
 SAVE_DIR = "maps"
 
 # --- Tile and Entity Codes ---

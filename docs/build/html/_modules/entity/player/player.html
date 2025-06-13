@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>entity.player.player &mdash; RPG project 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            RPG project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/context.html">Context Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/entity.html">Entity Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/maps.html">Maps Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utilities.html">Utilities Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RPG project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">entity.player.player</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for entity.player.player</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">context.context</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.weapon.weapon</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.weapon.MeleeWeapon</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeleeWeapon</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">entity.weapon.RangedWeapon</span><span class="w"> </span><span class="kn">import</span> <span class="n">RangedWeapon</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
+
+
+
+<div class="viewcode-block" id="Player">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">RectEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The player character controlled by the user.</span>
+
+<span class="sd">    Inherits from:</span>
+<span class="sd">        RectEntity: Provides hitbox and collision capabilities.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        x (float): Player&#39;s x-position on the game grid.</span>
+<span class="sd">        y (float): Player&#39;s y-position on the game grid.</span>
+<span class="sd">        center_x (int): Player&#39;s center x-position on the screen (pixels).</span>
+<span class="sd">        center_y (int): Player&#39;s center y-position on the screen (pixels).</span>
+<span class="sd">        speed (float): Movement speed of the player.</span>
+<span class="sd">        hp (int): Current hit points of the player.</span>
+<span class="sd">        max_hp (int): Maximum hit points of the player.</span>
+<span class="sd">        weapons (list[Weapon]): List of player&#39;s weapons (melee and ranged).</span>
+<span class="sd">        current_weapon_id (int): Index of currently selected weapon.</span>
+<span class="sd">        weapon (Weapon): Currently equipped weapon (can be melee or ranged).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Player.__init__">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the player at a specific grid position.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (float): Starting x-position on the grid.</span>
+<span class="sd">            y (float): Starting y-position on the grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">PLAYER_SIZE</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span><span class="n">PLAYER_SIZE</span><span class="o">*</span><span class="mf">1.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>  <span class="c1"># Grid x position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>  <span class="c1"># Grid y position</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># player center x on Screen</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># player center x on Screen</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">0.2</span>  <span class="c1"># Speed for smooth movement</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_hp</span> <span class="o">=</span> <span class="mi">10</span>
+
+        <span class="c1"># Combat attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapons</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">MeleeWeapon</span><span class="p">(</span><span class="n">damage</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span>
+            <span class="n">RangedWeapon</span><span class="p">(</span><span class="n">damage</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="n">MeleeWeapon</span><span class="p">(</span><span class="n">damage</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Player.draw">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.draw">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span><span class="n">current_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Renders the player on the screen along with health bar and weapon indicators.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            screen (pygame.Surface): The rendering surface.</span>
+<span class="sd">            current_time (int): Current time in milliseconds (used by weapon draw).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Draw player as a blue circle</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span><span class="p">),</span> <span class="n">PLAYER_SIZE</span><span class="p">)</span>
+
+        <span class="c1"># Draw health bar above player</span>
+        <span class="n">health_bar_width</span> <span class="o">=</span> <span class="n">TILE_SIZE</span>
+        <span class="n">health_bar_height</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">health_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_hp</span>
+        <span class="n">health_bar_fill_width</span> <span class="o">=</span> <span class="n">health_bar_width</span> <span class="o">*</span> <span class="n">health_ratio</span>
+
+        <span class="n">bar_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_x</span> <span class="o">-</span> <span class="n">health_bar_width</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">bar_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span> <span class="o">-</span> <span class="n">TILE_SIZE</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span>
+
+        <span class="c1"># Background (empty health)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="p">(</span><span class="n">bar_x</span><span class="p">,</span> <span class="n">bar_y</span><span class="p">,</span> <span class="n">health_bar_width</span><span class="p">,</span> <span class="n">health_bar_height</span><span class="p">))</span>
+        <span class="c1"># Foreground (filled health)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="p">(</span><span class="n">bar_x</span><span class="p">,</span> <span class="n">bar_y</span><span class="p">,</span> <span class="n">health_bar_fill_width</span><span class="p">,</span> <span class="n">health_bar_height</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">current_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">show_HitBox</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_hit_box</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span></div>
+
+        <span class="c1"># self.weapon.draw_attack_indicator(screen,self.x,self.y,direction=self.attack_direction)</span>
+
+<div class="viewcode-block" id="Player.update">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enemies</span><span class="p">,</span><span class="n">camera</span><span class="p">,</span><span class="n">current_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates player position and weapon logic.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            enemies (list[Enemy]): List of enemies in the game.</span>
+<span class="sd">            camera (Camera): Camera used to calculate screen-relative positions.</span>
+<span class="sd">            current_time (int): Current game time in milliseconds.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">camera</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">camera</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">TILE_SIZE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_pos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="bp">self</span><span class="p">,</span><span class="n">enemies</span><span class="o">=</span><span class="n">enemies</span><span class="p">)</span></div>
+
+        <span class="c1"># if isinstance(self.weapon, MeleeWeapon):</span>
+        <span class="c1">#     self.weapon.update_swing(current_time)</span>
+
+        <span class="c1"># # Check for hits during swing</span>
+        <span class="c1"># hit_enemies = self.weapon.check_swing_hit(self.x, self.y, enemies, current_time)</span>
+        <span class="c1"># for enemy in hit_enemies:</span>
+        <span class="c1">#     enemy.take_damage(self.weapon.damage)</span>
+
+
+<div class="viewcode-block" id="Player.move">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.move">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Moves the player by delta x and y, checking for wall collisions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dx (float): Change in x-direction.</span>
+<span class="sd">            dy (float): Change in y-direction.</span>
+<span class="sd">            game_map (Map): Game map used for wall collision detection.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+        <span class="n">new_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall_area</span><span class="p">(</span><span class="n">new_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">new_x</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">game_map</span><span class="o">.</span><span class="n">is_wall_area</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">new_y</span></div>
+
+
+
+<div class="viewcode-block" id="Player.take_damage">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.take_damage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">take_damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Reduces the player&#39;s health by the specified amount.</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">           amount (int): Amount of damage received.</span>
+
+<span class="sd">       Returns:</span>
+<span class="sd">           None</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hp</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Player.attack">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.attack">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">camera</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">projectiles</span><span class="p">,</span> <span class="n">enemies</span><span class="p">,</span> <span class="n">game_map</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs an attack using the currently selected weapon.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            camera (Camera): Camera for position offset.</span>
+<span class="sd">            current_time (int): Current game time in milliseconds.</span>
+<span class="sd">            projectiles (list[Projectile]): List to append new projectiles (for ranged).</span>
+<span class="sd">            enemies (list[Enemy]): List of enemies in range (for ranged).</span>
+<span class="sd">            game_map (Map): The game map (for ranged line-of-sight).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">weapon_type</span> <span class="o">==</span> <span class="n">WeaponType</span><span class="o">.</span><span class="n">MELEE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">attack</span><span class="p">(</span>
+                <span class="n">x</span> <span class="p">,</span><span class="n">y</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_angle_to_mouse</span><span class="p">(),</span>
+                <span class="n">current_time</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">weapon_type</span> <span class="o">==</span> <span class="n">WeaponType</span><span class="o">.</span><span class="n">RANGED</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">attack</span><span class="p">(</span>
+                <span class="n">x</span> <span class="p">,</span><span class="n">y</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_angle_to_mouse</span><span class="p">(),</span>
+                <span class="n">current_time</span><span class="p">,</span>
+                <span class="n">projectiles</span><span class="o">=</span><span class="n">projectiles</span><span class="p">,</span>
+                <span class="n">enemies</span><span class="o">=</span><span class="n">enemies</span><span class="p">,</span>
+                <span class="n">game_map</span><span class="o">=</span><span class="n">game_map</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Player.get_angle_to_mouse">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.get_angle_to_mouse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_angle_to_mouse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the angle between the player and the mouse cursor.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Angle in degrees from the player to the mouse position.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">mouse_pos</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">get_pos</span><span class="p">()</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">mouse_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_x</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">mouse_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="n">dx</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">angle</span></div>
+
+
+<div class="viewcode-block" id="Player.get_weapon_debug_info">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.get_weapon_debug_info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_weapon_debug_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns weapon-related debug information.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary containing debug info about weapon and player position.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="o">.</span><span class="n">get_debug_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">[</span><span class="s2">&quot;player_pos: &quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;x: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">res</span><span class="p">[</span><span class="s2">&quot;player_centre: &quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;x: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">center_x</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">center_y</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="Player.set_position">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.set_position">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the player position directly on the grid.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x (float): New x-coordinate.</span>
+<span class="sd">            y (float): New y-coordinate.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span></div>
+
+<div class="viewcode-block" id="Player.change_weapon_up">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.change_weapon_up">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">change_weapon_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Switches to the next weapon in the inventory (cyclic).</span>
+
+<span class="sd">       Returns:</span>
+<span class="sd">           None</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapons</span><span class="o">.</span><span class="fm">__len__</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapons</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Player.change_weapon_down">
+<a class="viewcode-back" href="../../../modules/entity.html#entity.player.player.Player.change_weapon_down">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">change_weapon_down</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Switches to the previous weapon in the inventory (cyclic).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapons</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weapons</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_weapon_id</span><span class="p">]</span></div>
+</div>
+
+
+
+
+
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, s28436.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
